@@ -1,0 +1,31 @@
+{
+  "archivos": 236,
+  "bytes": 3762317411,
+  "gib": 3.5,
+  "extensiones": {
+    ".mp4": 14,
+    ".mov": 53,
+    ".jpg": 86,
+    ".heic": 75,
+    ".png": 7,
+    ".nef": 1
+  },
+  "categorias": {
+    "Actividades": {
+      "archivos": 109,
+      "gib": 1.85
+    },
+    "Instalaciones": {
+      "archivos": 82,
+      "gib": 0.64
+    },
+    "Propuestas": {
+      "archivos": 33,
+      "gib": 0.45
+    },
+    "Reels": {
+      "archivos": 12,
+      "gib": 0.57
+    }
+  }
+}

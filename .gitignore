@@ -1,0 +1,20 @@
+# Dependencias y salidas generadas (cuando se configure el stack)
+node_modules/
+dist/
+build/
+coverage/
+
+# Configuración privada local; las plantillas sí se versionan
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Temporales y archivos del sistema
+tmp/
+*.log
+.DS_Store
+Thumbs.db
+
+# Medios originales: se conservan en ../fotos, fuera del repositorio
+/fotos/
