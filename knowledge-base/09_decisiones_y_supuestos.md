@@ -34,7 +34,7 @@ Las decisiones siguientes fueron confirmadas por Franco en la conversación de f
 **Contexto:** sitio de contenido y experiencias visuales sin backend de gestión inicial; Franco aprenderá estas herramientas con el proyecto.
 **Alternativas consideradas:** React como base con otras herramientas o Next.js.
 **Justificación:** generar contenido preparado y añadir comportamiento por componentes encaja con el alcance.
-**Trade-offs aceptados:** aprender Astro y los conceptos de React usados; no incorporar React por defecto en todas las secciones. Versiones pendientes de scaffolding.
+**Trade-offs aceptados:** aprender Astro y los conceptos de React usados; no incorporar React por defecto en todas las secciones. C-01 fijó y verificó las versiones de la base, registradas en [02](02_descripcion_general.md); React sigue sujeto a una necesidad concreta y aprobación antes de incorporarlo.
 
 ### DD-05 — CSS estándar
 

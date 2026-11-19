@@ -1,6 +1,6 @@
 # Arquitectura propuesta
 
-Las tecnologías aprobadas están en [02](02_descripcion_general.md). La organización siguiente es una propuesta técnica de implementación, no código ya creado ni una ampliación del alcance.
+Las tecnologías y versiones verificadas están en [02](02_descripcion_general.md). C-01 creó la base técnica estática; la organización funcional siguiente distingue archivos existentes de carpetas previstas para changes posteriores, sin ampliar el alcance. La página mínima no representa el diseño visual de C-03.
 
 ## Patrones aplicados
 
@@ -21,16 +21,19 @@ web/
 ├── documentacion/             Fuentes y revisión de medios
 ├── investigacion/             Antecedentes de referentes
 ├── openspec/                  Especificaciones del proyecto
-├── src/                       Por crear al implementar
-│   ├── pages/                 Principal y rutas de propuestas
-│   ├── layouts/               Estructuras compartidas de página
-│   ├── components/            Componentes Astro y React necesarios
-│   ├── data/                  Identidad, propuestas, FAQs y catálogo
-│   ├── types/                 Tipos compartidos cuando sean útiles
-│   ├── scripts/               Comportamiento que no requiera React
-│   ├── styles/                Variables y estilos globales comunes
-│   └── assets/images/         Fotografías seleccionadas para web
-└── public/                    Archivos que se sirvan sin procesamiento
+├── package.json               Versiones directas y comandos actuales
+├── package-lock.json          Árbol reproducible de dependencias
+├── tests/smoke.test.mjs        Dos comprobaciones HTTP de la base
+├── src/                       Base creada en C-01
+│   ├── pages/index.astro       Página técnica mínima; propuestas futuras
+│   ├── layouts/BaseLayout.astro Layout base compartido
+│   ├── styles/global.css      CSS estándar inicial
+│   ├── components/            Previsto: componentes de la experiencia
+│   ├── data/                  Previsto: identidad, propuestas, FAQs y catálogo
+│   ├── types/                 Previsto cuando sean útiles tipos compartidos
+│   ├── scripts/               Previsto: comportamiento sin React
+│   └── assets/images/         Previsto: fotografías seleccionadas
+└── public/                    Previsto: archivos sin procesamiento
 ```
 
 Desde la raíz `web/`, `../fotos/Fotos` contiene originales y `../tmp` derivados auxiliares. No se incluyen en el build ni se trasladan íntegros al repositorio. No se crea todavía una carpeta definitiva de videos: su distribución está pendiente.
@@ -63,6 +66,8 @@ No hay variables de entorno obligatorias cerradas en esta fase. Dominio canónic
 
 Vercel es el alojamiento previsto por el acuerdo anterior. La publicación requiere configurar dominio, build y distribución de archivos según las condiciones y límites vigentes del servicio; no se asume capacidad gratuita ilimitada. Esto representa infraestructura simple de publicación, sin backend, contenedores ni base de datos propios.
 
-Las versiones y comandos reproducibles se fijarán con el scaffolding. Las pruebas de contenido, navegación y comportamiento se definirán conforme a las funcionalidades y las reglas del proyecto. Esta KB no instala paquetes, crea la aplicación ni decide un runner de pruebas.
+Las versiones de la base quedaron fijadas en C-01 y se registran en [02](02_descripcion_general.md). Los scripts actuales son `npm run dev`, `npm run check`, `npm run build`, `npm run preview`, `npm test` y `npm run verify`; sus instrucciones están en el [README raíz](../README.md). `verify` ejecuta tipos, build y dos smokes HTTP con `node --test`: portada técnica con HTTP 200 e identidad en español, y ruta inexistente con HTTP 404. No se instaló `@playwright/test`.
+
+Las verificaciones de instalación limpia, servidor local y propagación de errores están documentadas en [la evidencia de C-01](../openspec/changes/archive/2026-11-19-foundation-setup/verification.md). Las pruebas de contenido comercial, navegación e interacción se ampliarán con las funcionalidades correspondientes; esta verificación de base no acredita el diseño visual ni las experiencias de C-03 en adelante.
 
 Las futuras agenda y analítica se tratarán mediante un alcance posterior, sin reservar ahora infraestructura innecesaria para ellas.

@@ -19,7 +19,7 @@ Cada change se trabaja en su propia rama `feature/change_x`, usando su número s
 
 Este roadmap cubre el lanzamiento en español de la principal y cuatro páginas de propuestas. Conserva Astro, TypeScript, CSS estándar, React selectivo, contenido compartido en TypeScript y fotografías seleccionadas dentro del repositorio. Los originales quedan fuera. Agenda, analítica, cuentas, CMS, reservas automáticas y pagos no son dependencias del lanzamiento.
 
-Al generar este índice, `openspec list --json` no contiene changes. Todos los estados siguientes permanecen pendientes: escribir el roadmap no crea artifacts ni completa trabajo de implementación. `C-01` es el ID documental; el nombre para el comando es, por ejemplo, `/opsx:propose foundation-setup`.
+Estado comprobado al 19/11/2026: C-01 `foundation-setup` está implementado, verificado y archivado, con sus ocho tareas completas y su especificación sincronizada. C-02 a C-13 siguen pendientes. Consultar el CLI para recuperar el estado vigente. `C-01` es el ID documental; el nombre para el comando es, por ejemplo, `/opsx:propose foundation-setup`.
 
 La dirección visual inicial es parte central del producto y se valida temprano. Los efectos concretos, las tipografías y la distribución de videos se deciden mediante pruebas; no se presupone 3D, contracción de portada, Cloudinary ni una librería. Solo se usan recursos gratuitos. El objetivo expresado de un mes a un mes y medio orienta la priorización, sin convertir este grafo en una estimación temporal.
 
@@ -123,7 +123,7 @@ C-06 a C-09 producen componentes o módulos con ownership separado. C-11 es due�
 ## FASE 0 — Cimientos del sitio
 
 ### [C-01] `foundation-setup`
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` implementado, verificado y archivado. Ver [evidencias y excepción TDD aceptada para C-01](openspec/changes/archive/2026-11-19-foundation-setup/verification.md) y [especificación vigente](openspec/specs/sitio-estatico-base/spec.md).
 - **Scope**:
   - Crear el proyecto Astro con TypeScript en la raíz del repositorio `web/`, preservando documentación, OpenSpec y recursos externos; no anidar un nuevo repositorio ni mover los originales.
   - Seleccionar versiones compatibles, fijar dependencias y documentar comandos reproducibles de desarrollo, verificación de tipos y build. Preparar CSS estándar; incorporar React únicamente cuando una interacción lo justifique.

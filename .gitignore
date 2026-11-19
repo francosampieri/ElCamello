@@ -3,6 +3,7 @@ node_modules/
 dist/
 build/
 coverage/
+.astro/
 
 # Configuración privada local; las plantillas sí se versionan
 .env

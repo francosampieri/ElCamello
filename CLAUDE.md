@@ -6,8 +6,10 @@ Instrucciones específicas del repositorio `web/`, con destino operativo Codex. 
 
 | Capa | Tecnología aprobada | Versión |
 |---|---|---|
-| Páginas y generación del sitio | Astro, con contenido generado antes de la visita. | Se seleccionará y fijará al iniciar la implementación. |
-| Datos y comportamiento | TypeScript. | Se fijará según compatibilidad del proyecto. |
+| Páginas y generación del sitio | Astro, con contenido generado antes de la visita. | `7.4.13`, fijada en C-01. |
+| Datos y comportamiento | TypeScript, configuración estricta. | `6.0.3`, fijada en C-01. |
+| Verificación de tipos Astro | `@astrojs/check`. | `0.9.12`, fijada en C-01. |
+| Entorno de desarrollo verificado | Node.js y npm. | Node `24.19.0`; npm `11.17.0`. |
 | Estilos | CSS estándar, variables compartidas y estilos por componente. | Según soporte de los navegadores objetivo por definir. |
 | Componentes interactivos | React cuando aporte una necesidad concreta. | Se fijará si se incorpora la integración. |
 | Contenido | Archivos TypeScript compartidos entre principal y propuestas. | Sin motor de base de datos. |

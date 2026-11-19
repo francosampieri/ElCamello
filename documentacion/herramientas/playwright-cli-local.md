@@ -10,7 +10,7 @@ Verificado el 18 de noviembre de 2026. Se eligió Playwright CLI con su skill pa
 | Binario `@playwright/cli` | Instalado localmente y verificado: **0.1.25**. |
 | Dependencias del CLI | `playwright` y `playwright-core` **1.66.0-alpha-2026-11-18**, fijadas por el paquete oficial y por el lockfile local. |
 | Chrome for Testing | Portable compartido con la preparación de Chrome DevTools: **158.0.8127.36**. |
-| Suite del producto | Todavía no incorporada. No se instaló `@playwright/test` en la aplicación ni se inició Astro. Las pruebas persistentes se incorporarán según C01/C03. |
+| Pruebas del producto | C-01 creó la base Astro y dos smokes HTTP con el runner integrado de Node; `npm run verify` pasó. No se instaló `@playwright/test`; las pruebas de interacción se ampliarán en los changes correspondientes. |
 
 El CLI utiliza un daemon local para conservar cada sesión entre comandos. Ese proceso forma parte de su funcionamiento y no constituye una configuración de Playwright MCP en Codex.
 
@@ -85,7 +85,7 @@ Si se pierde la carpeta completa, recrear primero un paquete privado en esa carp
 
 El primer intento dentro del sandbox de Windows falló porque Crashpad de Chrome no pudo iniciar. La misma prueba funcionó con permisos de ejecución ampliados. En este entorno, abrir el navegador puede requerir esa autorización; consultar ayuda o versión no demuestra por sí solo que el navegador pueda arrancar.
 
-Esta verificación comprueba el engranaje CLI/daemon/navegador. No valida páginas, formularios, navegación, accesibilidad ni flujos E2E del producto. Para esas pruebas debe existir primero la aplicación y su servidor local.
+Esta verificación del 18 de noviembre comprueba el engranaje CLI/daemon/navegador. No valida páginas, formularios, navegación, accesibilidad ni flujos E2E del producto. C-01 ya creó la base Astro y verificó su servidor local; los dos smokes HTTP de esa base están documentados en [la evidencia de C-01](../../openspec/changes/archive/2026-11-19-foundation-setup/verification.md). La evaluación de interacción visual del producto sigue correspondiendo a los changes posteriores.
 
 ## Fuentes oficiales
 

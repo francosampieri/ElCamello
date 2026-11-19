@@ -39,10 +39,17 @@ Este registro separa lo que falta decidir de lo ya aprobado. Un pendiente de con
 | PA-08 | Alta | Validar número de WhatsApp, mensajes, dirección e indicaciones y mecanismo de mapa. | Contacto y ubicación antes de publicar. | Dueña y responsable comercial; Franco verifica enlaces. |
 | PA-09 | Media | Afinar texto de presentación, historia y preguntas frecuentes. | Revisión editorial final. | Franco redacta; dueña confirma. |
 | PA-10 | Media | Precisar personal calificado, condiciones de actividades y estacionalidad. | Publicación de esas afirmaciones; no extrapolar aptitud universal. | Dueña. |
-| PA-11 | Media | Elegir versiones compatibles y comandos reproducibles de desarrollo/build. | Scaffolding; no crear infraestructura de aplicación por esta KB. | Franco con asistencia técnica. |
 | PA-12 | Media | Definir dominio final, accesos y configuración de alojamiento y publicación. | Despliegue e indexación; verificar límites y condiciones vigentes. | Cliente gestiona dominio; Franco configura lo acordado. |
 | PA-13 | Media | Definir tipografías, aplicación de marca y adaptaciones móviles de las referencias. | Diseño visual final; siempre recursos gratuitos. | Franco, con revisión de la dueña. |
 | PA-14 | Media | Acordar dispositivos de prueba y criterios técnicos concretos de carga/fluidez. | Verificación de calidad antes de publicar. | Franco. |
+
+## Resoluciones registradas
+
+### PA-11 — Versiones y comandos de la base
+
+Resuelto en C-01 con aprobación de Franco y verificaciones reales: Astro `7.4.13`, TypeScript `6.0.3`, `@astrojs/check` `0.9.12`, sobre Node `24.19.0` y npm `11.17.0`. Las versiones directas y scripts están en [package.json](../package.json), con árbol fijado en [package-lock.json](../package-lock.json).
+
+Comandos disponibles: `npm ci`, `npm run dev`, `npm run check`, `npm run build`, `npm run preview`, `npm test` y `npm run verify`. La instalación limpia y el flujo de tipos, build y dos smokes HTTP pasaron; ver [README](../README.md) y [evidencia de C-01](../openspec/changes/archive/2026-11-19-foundation-setup/verification.md). Esta resolución solo cubre el scaffolding y no cierra decisiones de contenido, medios, diseño ni publicación.
 
 ## Datos desconocidos que no bloquean la base
 

@@ -1,6 +1,6 @@
 # Parador El Camello — Base de conocimiento
 
-Base de conocimiento construida de forma interactiva con Franco Sampieri. Recoge el Discovery aprobado y las decisiones técnicas posteriores, confirmadas el 18 de noviembre de 2026. Describe el lanzamiento acordado; la web todavía no está implementada.
+Base de conocimiento construida de forma interactiva con Franco Sampieri. Recoge el Discovery aprobado y las decisiones técnicas posteriores, confirmadas el 18 de noviembre de 2026. Describe el lanzamiento acordado: C-01 ya implementó la base técnica mínima y las funcionalidades comerciales siguen pendientes.
 
 ## Índice de archivos
 
@@ -36,7 +36,8 @@ El stack aprobado es Astro con TypeScript, CSS estándar y React cuando haga fal
 - **Aprobado:** decisiones expresamente confirmadas durante la conversación y alcance del [Discovery](../discovery/discovery.md).
 - **Propuesta técnica:** organización o representación recomendada en esta KB, revisable al implementar sin alterar el alcance.
 - **Pendiente:** requiere una decisión o validación identificada en [10](10_preguntas_abiertas.md). No equivale a un servicio confirmado ni a un dato publicable.
-- No hay una estimación de visitas. No se fijan versiones de dependencias ni presupuestos cuantitativos de rendimiento en esta etapa.
+- **Base verificada en C-01:** versiones directas fijadas, instalación reproducible, tipos, build y dos smokes HTTP; ver [02](02_descripcion_general.md), [08](08_arquitectura_propuesta.md) y la resolución PA-11 en [10](10_preguntas_abiertas.md). Esto no acredita todavía el diseño visual ni las funcionalidades comerciales.
+- No hay una estimación de visitas ni presupuestos cuantitativos de rendimiento acordados.
 
 ## Fuentes y precedencia
 
