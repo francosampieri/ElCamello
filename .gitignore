@@ -18,3 +18,6 @@ Thumbs.db
 
 # Medios originales: se conservan en ../fotos, fuera del repositorio
 /fotos/
+
+# Cache local de reglas de skills; regenerar tras clonar
+.atl/

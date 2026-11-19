@@ -1,6 +1,6 @@
 # Parador El Camello - Web
 
-Repositorio del sitio web de Parador El Camello, Cacheuta, Mendoza. La documentación del proyecto se mantiene en español. El stack y las decisiones de implementación se definirán durante la fundación interactiva.
+Repositorio del sitio web de Parador El Camello, Cacheuta, Mendoza. La documentación del proyecto se mantiene en español. El stack aprobado es Astro con TypeScript, CSS estándar y React cuando sea necesario. La fundación sigue en curso; la aplicación todavía no está implementada.
 
 ## Organización
 
@@ -9,13 +9,22 @@ ElCamello/
 ├── web/                         Este repositorio y carpeta principal de Codex
 │   ├── documentacion/           Relevamiento, estructura, selección de medios y fuentes
 │   ├── investigacion/           Investigación de referentes
+│   ├── discovery/               Discovery aprobado
+│   ├── knowledge-base/          Base de conocimiento consolidada
 │   └── README.md
 ├── fotos/Fotos/                 Selección audiovisual original, fuera del repositorio
 ├── administracion/presupuestos/ Documentos comerciales, fuera del repositorio
 └── tmp/                         Herramientas y derivados de inspección, fuera del repositorio
 ```
 
-La base de conocimiento, las especificaciones y las instrucciones del proyecto se crearán aquí durante la fundación. No se ha seleccionado un framework ni se ha desarrollado la web.
+El Discovery y la base de conocimiento se encuentran aquí. Las especificaciones y las instrucciones del proyecto se completarán durante la fundación antes de desarrollar la web.
+
+## Fundación
+
+- [Discovery aprobado](discovery/discovery.md).
+- [Base de conocimiento e índice de documentos](knowledge-base/README.md).
+
+Los contenidos se centralizarán en archivos TypeScript. Las fotografías seleccionadas y preparadas para la web se incorporarán al repositorio; la distribución de videos sigue pendiente de evaluar las primeras exportaciones. Todos los recursos serán gratuitos.
 
 ## Documentación de partida
 

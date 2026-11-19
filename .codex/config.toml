@@ -1,0 +1,22 @@
+# Configuración del proyecto. Context7 sigue heredándose de la configuración global.
+[mcp_servers.astro-docs]
+url = "https://mcp.docs.astro.build/mcp"
+enabled = true
+required = false
+startup_timeout_sec = 30
+
+[mcp_servers.stitch]
+url = "https://stitch.googleapis.com/mcp"
+# Activar solo después de configurar STITCH_API_KEY en el entorno de Codex.
+env_http_headers = { "X-Goog-Api-Key" = "STITCH_API_KEY" }
+enabled = false
+required = false
+startup_timeout_sec = 30
+
+[mcp_servers.chrome-devtools]
+command = "node"
+args = [".codex/chrome-devtools.mjs"]
+enabled = true
+required = false
+startup_timeout_sec = 30
+tool_timeout_sec = 60
