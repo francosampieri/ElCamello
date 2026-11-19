@@ -7,9 +7,9 @@ startup_timeout_sec = 30
 
 [mcp_servers.stitch]
 url = "https://stitch.googleapis.com/mcp"
-# Activar solo después de configurar STITCH_API_KEY en el entorno de Codex.
+# La credencial se lee del entorno; no guardar su valor aquí.
 env_http_headers = { "X-Goog-Api-Key" = "STITCH_API_KEY" }
-enabled = false
+enabled = true
 required = false
 startup_timeout_sec = 30
 

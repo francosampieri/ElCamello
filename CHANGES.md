@@ -13,8 +13,6 @@ Cada change se trabaja en su propia rama `feature/change_x`, usando su número s
 1. Identificar el change y consultar `openspec list --json` y, cuando exista, `openspec status --change "<nombre>" --json`. Comprobar que sus dependencias estén implementadas y verificadas; el CLI es la fuente de estado real. Los checks de este índice describen el plan, no sustituyen al CLI.
 2. Leer los archivos y secciones de la KB indicados en «Leer antes». Revisar los pendientes asociados y distinguir decisiones aprobadas de propuestas técnicas.
 
-> **Recordatorio antes de proponer/iniciar C-01 `foundation-setup`:** recordar a Franco conectar correctamente Stitch. Guardar `STITCH_API_KEY` localmente fuera de Git y chats; cuando esté lista, habilitar solo Stitch con `enabled = true`, recargar Codex y verificar primero `initialize` y `tools/list`, según [el procedimiento MCP](documentacion/herramientas/configuracion-mcp.md#activar-stitch-cuando-corresponda). No pedir claves ahora ni conectarlo por cuenta propia. Es un recordatorio de preparación de la herramienta de diseño, no una dependencia de compilación de Astro ni un change adicional.
-
 3. Ejecutar `/opsx:propose <nombre-del-change>`, usando el nombre kebab-case de su ficha. Completar allí especificaciones, decisiones y tareas; resolver con Franco las decisiones materiales todavía abiertas.
 4. Implementar mediante `/opsx:apply <nombre-del-change>`, verificar el resultado y archivar mediante `/opsx:archive <nombre-del-change>` cuando corresponda. Las fases siguientes agrupan trabajo; no impiden revisar o modificar artifacts con OPSX.
 5. Marcar `[x]` solamente cuando el change esté realmente completado y verificado, manteniendo consistentes el índice y el estado del CLI.
@@ -127,7 +125,6 @@ C-06 a C-09 producen componentes o módulos con ownership separado. C-11 es due�
 ### [C-01] `foundation-setup`
 - **Estado**: `[ ]` pendiente
 - **Scope**:
-  - Dar el recordatorio operativo de conexión de Stitch de «Cómo usar este documento» antes de iniciar o proponer este primer change; mantenerlo como preparación de diseño, sin incorporarlo al runtime ni a las dependencias de build.
   - Crear el proyecto Astro con TypeScript en la raíz del repositorio `web/`, preservando documentación, OpenSpec y recursos externos; no anidar un nuevo repositorio ni mover los originales.
   - Seleccionar versiones compatibles, fijar dependencias y documentar comandos reproducibles de desarrollo, verificación de tipos y build. Preparar CSS estándar; incorporar React únicamente cuando una interacción lo justifique.
   - Establecer carpetas base y una página mínima verificable. Elegir la estrategia de pruebas para comportamientos posteriores, sin crear una suite de aserciones vacías ni instalar dependencias de funciones futuras.

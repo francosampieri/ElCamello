@@ -72,8 +72,6 @@ Cadena estructural de ocho changes: `C-01 → C-03 → C-04 → C-09 → C-10 �
 
 **Primer change:** C-01, nombre CLI `foundation-setup`, rama `feature/change_1`. Los IDs documentales C-01, C-02, etc. corresponden a ramas `feature/change_1`, `feature/change_2`, etc.; no son los nombres kebab-case usados por OpenSpec.
 
-**Antes de proponer o iniciar C-01:** recordar a Franco conectar correctamente Stitch según [el procedimiento de activación](documentacion/herramientas/configuracion-mcp.md#activar-stitch-cuando-corresponda). La conexión sigue aplazada: no pedir la clave en el chat ni activarlo por cuenta propia. Cuando Franco esté listo, guardar `STITCH_API_KEY` fuera de Git, habilitar el servidor, recargar y verificar `initialize` y `tools/list`. Es preparación de diseño, no una dependencia del build de Astro.
-
 ## Reglas Duras (específicas del proyecto)
 
 Estas reglas fueron confirmadas con Franco. Complementan las instrucciones activas del agente; no se presupone la existencia de un archivo global de Claude.
@@ -89,15 +87,16 @@ Estas reglas fueron confirmadas con Franco. Complementan las instrucciones activ
 9. **Alcance y contenido confirmados.** Mantener las cuatro propuestas y el último bloque «Armá tu propuesta», sin quinta página. Centralizar contenido en TypeScript. No añadir seguimiento, formularios, sistemas o promesas comerciales fuera del alcance aprobado. Registrar las dudas y resolverlas en la etapa correspondiente antes de publicar.
 10. **Documentación en español.** Redactar instrucciones y artifacts en español; conservar encabezados estructurales y términos normativos que exija el esquema OpenSpec activo.
 11. **Recordatorio de actualización documental.** Al finalizar una sesión, un change, una corrección u otro trabajo que amerite actualizar la KB o documentación pertinente, revisar su impacto documental y recordárselo explícitamente a Franco: indicar qué documentos se actualizaron o cuáles requieren actualización y por qué. Realizar las actualizaciones necesarias que ya estén autorizadas; el recordatorio no las reemplaza. Si faltan datos o decisiones por confirmar, señalar el pendiente y consultarlo sin inventar información.
+12. **Revisión de vigencia y eliminación consultada.** Revisar regularmente la KB y los documentos pertinentes, y al cerrar trabajos que puedan afectarlos, para detectar datos vencidos, contradictorios o que hayan perdido relevancia. Antes de eliminarlos, presentar a Franco los archivos y datos afectados, el motivo y la propuesta de tratamiento, y esperar su confirmación. Conservar el histórico útil cuando corresponda; no borrar información por asumir que dejó de servir. Esta consulta previa también aplica cuando una actualización implique retirar información existente.
 
 ## Flujo de Trabajo
 
-1. Recuperar el contexto y leer la KB pertinente, estas reglas y [CHANGES.md](CHANGES.md). Si corresponde C-01, dar primero el recordatorio de Stitch.
+1. Recuperar el contexto y leer la KB pertinente, estas reglas y [CHANGES.md](CHANGES.md).
 2. Consultar `openspec list --json` y, para un change existente, `openspec status --change "<nombre>" --json`. El CLI es la fuente de estado; los checks del roadmap no lo sustituyen. Revisar dependencias y pendientes aplicables.
 3. Comprobar Git y trabajar en la rama `feature/change_x` correspondiente antes de escribir artifacts o implementación del change. Con trabajo previo que impida hacerlo sin mezclar cambios, consultar cómo proceder; no crear commits para despejarlo.
 4. Usar la skill OPSX correspondiente. Por ejemplo, `/opsx:propose foundation-setup` prepara artifacts revisables; no autoriza automáticamente `/opsx:apply foundation-setup`. Crear estructuras y obtener instrucciones mediante el CLI, no manualmente.
 5. Resolver las skills del dominio y las decisiones pendientes con Franco. Implementar y verificar el alcance autorizado según la gobernanza y las instrucciones de pruebas activas, sin tests vacíos ni afirmaciones de calidad sin evidencia.
 6. Presentar cambios, comprobaciones y pendientes. Commits, pushes y merges necesitan autorización explícita. Archivar mediante `/opsx:archive <nombre>` cuando se solicite y se cumplan sus instrucciones; archivar no implica autorización para Git.
-7. Actualizar documentación y estado que realmente correspondan, comunicar su situación según la regla 11, mantener sincronizados `AGENTS.md`/`CLAUDE.md` y conservar en memoria las decisiones y el próximo paso.
+7. Actualizar documentación y estado que realmente correspondan, comunicar su situación y consultar las eliminaciones según las reglas 11 y 12, mantener sincronizados `AGENTS.md`/`CLAUDE.md` y conservar en memoria las decisiones y el próximo paso.
 
 Este documento no inicia un change, no crea ramas y no autoriza publicar el sitio. La configuración externa de publicación se prepara para revisión antes de ejecutarla, conforme a C-13 y la gobernanza aplicable.
