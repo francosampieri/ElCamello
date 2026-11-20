@@ -1,0 +1,45 @@
+---
+import type { EnlaceNavegacion } from '../data/navegacion.ts';
+
+interface Props {
+  enlaces: readonly EnlaceNavegacion[];
+}
+
+const { enlaces } = Astro.props;
+const esActual = (href: string) => !href.includes('#') && href === Astro.url.pathname ? 'page' : undefined;
+---
+
+<nav class="navegacion-escritorio" aria-label="Principal">
+  <ul>
+    {enlaces.map(({ href, etiqueta }) => <li><a href={href} aria-current={esActual(href)}>{etiqueta}</a></li>)}
+  </ul>
+</nav>
+<details class="navegacion-movil" data-menu-movil>
+  <summary>Menú</summary>
+  <nav aria-label="Principal">
+    <ul>
+      {enlaces.map(({ href, etiqueta }) => <li><a href={href} aria-current={esActual(href)}>{etiqueta}</a></li>)}
+    </ul>
+  </nav>
+</details>
+
+<script>
+  for (const menu of document.querySelectorAll<HTMLDetailsElement>('[data-menu-movil]')) {
+    const control = menu.querySelector('summary');
+    menu.addEventListener('keydown', event => {
+      if (event.key !== 'Escape' || !menu.open) return;
+      event.preventDefault();
+      menu.open = false;
+      control?.focus();
+    });
+    menu.addEventListener('click', event => {
+      const link = event.target instanceof Element ? event.target.closest('a') : null;
+      if (!link || event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+      const destino = new URL(link.href);
+      if (destino.origin !== location.origin || destino.pathname !== location.pathname) return;
+      const objetivo = destino.hash ? document.getElementById(decodeURIComponent(destino.hash.slice(1))) : null;
+      menu.open = false;
+      requestAnimationFrame(() => (objetivo ?? document.getElementById('contenido'))?.focus({ preventScroll: true }));
+    });
+  }
+</script>

@@ -23,6 +23,13 @@ function ejemplo<T>(valor: T, revisar: string) {
   return provisional(valor, revisar, origenComercial);
 }
 
+function borradorWhatsApp(valor: string) {
+  return provisional(valor, 'Revisar el mensaje con la dueña antes de habilitar el enlace.', {
+    fuente: 'Borrador redactado en C-05 a pedido de Franco',
+    responsable: 'Franco y la dueña',
+  });
+}
+
 const medios = () => pendiente('Seleccionar medios en C-04.', { responsable: 'Franco' });
 
 export const propuestas: readonly Propuesta[] = [
@@ -39,7 +46,7 @@ export const propuestas: readonly Propuesta[] = [
       duracion: ejemplo('De 10 a 20 h', 'Validar el horario de la jornada.'),
       capacidad: ejemplo('De 10 a 35 personas', 'Validar límites para eventos empresariales.'),
       precio: provisional({ importe: 25000, moneda: 'ARS', por: 'persona' }, 'Sustituir el precio de ejemplo y decidir si se muestran precios.', { responsable: 'La dueña y el responsable comercial' }),
-      mensajeWhatsApp: ejemplo('Hola, quiero consultar por una jornada para mi equipo.', 'Validar el mensaje contextual.'),
+      mensajeWhatsApp: borradorWhatsApp('¡Hola! Estoy organizando una jornada para mi equipo. ¿Me cuentan qué actividades ofrecen para empresas y cómo consultar fechas?'),
       medios: medios(),
     },
   },
@@ -55,7 +62,7 @@ export const propuestas: readonly Propuesta[] = [
       opcionales: confirmado(['Traslados', 'Torta', 'DJ', 'Iluminación', 'Barra', 'Show', 'Gastronomía', 'Juegos de living', 'Cotillón', 'Decoración'], relevamiento),
       duracion: ejemplo('Jornada de 6 horas como ejemplo', 'Acordar la duración según la modalidad.'),
       capacidad: ejemplo('Capacidad a conversar con cada grupo', 'Validar condiciones por evento sin trasladar el rango general.'),
-      mensajeWhatsApp: ejemplo('Hola, quiero consultar por un cumpleaños de adultos.', 'Validar el mensaje contextual.'),
+      mensajeWhatsApp: borradorWhatsApp('¡Hola! Estoy buscando un lugar para festejar un cumpleaños de adultos. ¿Me cuentan qué opciones hay para un grupo de amigos?'),
       medios: medios(),
     },
   },
@@ -71,7 +78,7 @@ export const propuestas: readonly Propuesta[] = [
       opcionales: confirmado(['Pelotero', 'Gastronomía', 'Traslado', 'Cotillón', 'Decoración', 'Mago o payaso', 'Animación y entretenimiento'], relevamiento),
       duracion: ejemplo('Festejo de día, con horario a coordinar', 'Confirmar horarios disponibles.'),
       capacidad: ejemplo('Capacidad a conversar con cada familia', 'Validar límites y condiciones por grupo.'),
-      mensajeWhatsApp: ejemplo('Hola, quiero consultar por un cumpleaños infantil.', 'Validar el mensaje contextual.'),
+      mensajeWhatsApp: borradorWhatsApp('¡Hola! Quisiera organizar un cumpleaños infantil en El Camello. ¿Qué actividades recomiendan según la edad del grupo?'),
       medios: medios(),
     },
   },
@@ -87,7 +94,7 @@ export const propuestas: readonly Propuesta[] = [
       opcionales: confirmado(['Gastronomía', 'Traslados'], relevamiento),
       duracion: ejemplo('De 10 a 19 h', 'Validar el horario de la jornada.'),
       capacidad: ejemplo('Grupo de 20 personas como ejemplo de composición', 'Validar límites y condiciones para encuentros de primaria.'),
-      mensajeWhatsApp: ejemplo('Hola, somos familias de primaria y queremos consultar por un día de campo.', 'Validar el mensaje contextual.'),
+      mensajeWhatsApp: borradorWhatsApp('¡Hola! Somos un grupo de familias de primaria y queremos organizar un encuentro para los chicos. ¿Cómo podemos consultar actividades y fechas?'),
       medios: medios(),
     },
   },

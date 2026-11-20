@@ -70,7 +70,15 @@ node --input-type=module -e "import { listarPendientes } from './src/data/conten
 
 Por ejemplo, la entrada `propuestas.empresas.titulo` apunta a la unidad `titulo` en [propuestas.ts](src/data/propuestas.ts). Al confirmar el título, sustituí la unidad por `confirmado('Nombre acordado', 'Validación de la dueña')`. La consulta devolverá su valor nuevo y el inventario dejará de mostrar esa entrada. El resto de las revisiones seguirá en el inventario. Los ejemplos de horarios, capacidades, contactos, precios y slugs conservan las validaciones comerciales y editoriales indicadas en [preguntas abiertas](knowledge-base/10_preguntas_abiertas.md).
 
-`validarCatalogo()` informa IDs duplicados o referencias rotas con su ubicación. Una selección de medios `pendiente` carece de ID y figura en el inventario editorial. Una selección con IDs exige que cada uno exista en el catálogo. C-04 incorporará las exportaciones web seleccionadas. La distribución de videos se evaluará con esas exportaciones.
+`validarCatalogo()` informa IDs duplicados o referencias rotas con su ubicación. Una selección de medios `pendiente` carece de ID y figura en el inventario editorial. Una selección con IDs exige que cada uno exista en el catálogo. Los derivados de C-04 se prepararon en su rama separada. La distribución de videos conserva su evaluación posterior.
+
+## Navegación y mensajes de consulta
+
+Ejecutá `npm run dev` y abrí `/revision-navegacion/`. El detalle de muestra permite volver a Propuestas mediante un enlace directo a la sección. En Consulta están los seis borradores para revisar con la dueña. Las dos rutas pertenecen al entorno de desarrollo.
+
+[BaseLayout](src/layouts/BaseLayout.astro) contiene la cabecera, el salto al contenido, la región principal y el pie. El slot recibe el contenido de cada página. Proporcioná al layout destinos construidos con [destinosHabilitados](src/data/navegacion.ts), junto con la ruta y el ID del fragmento que existe en HTML. C-11 conectará las secciones publicadas de la principal.
+
+El número proporcionado por Franco queda en [parador.ts](src/data/parador.ts) con verificación pendiente en WhatsApp. Los mensajes comunes se editan allí y los de cada propuesta en [propuestas.ts](src/data/propuestas.ts). Tras PA-08, registrá el destino en dígitos internacionales y confirmá cada mensaje por separado. El [resolver](src/data/whatsapp.ts) prepara un enlace solo con ambos datos confirmados. `npm run test:navegacion` comprueba los enlaces con datos sintéticos y sin abrir conversaciones.
 
 La [verificación de C-02](openspec/changes/archive/2026-11-20-contenido-centralizado/verification.md) registra las pruebas y el control negativo del flujo.
 

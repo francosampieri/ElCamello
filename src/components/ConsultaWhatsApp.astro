@@ -1,0 +1,23 @@
+---
+import { mensajeDeConsulta, resolverWhatsApp } from '../data/whatsapp.ts';
+import type { AmbitoConsulta } from '../data/whatsapp.ts';
+
+interface Props {
+  ambito: AmbitoConsulta;
+  etiqueta: string;
+  revision?: boolean;
+}
+
+const { ambito, etiqueta, revision = false } = Astro.props;
+const resultado = resolverWhatsApp(ambito);
+const mensaje = revision ? mensajeDeConsulta(ambito) : undefined;
+---
+
+{revision ? (
+  <div class="consulta-ejemplo">
+    <h3>{etiqueta}</h3>
+    {mensaje && mensaje.estado !== 'pendiente' ? <p>{mensaje.valor}</p> : <p>Mensaje pendiente.</p>}
+  </div>
+) : resultado.estado === 'disponible' && (
+  <a class="accion-principal" href={resultado.href}>{etiqueta}</a>
+)}

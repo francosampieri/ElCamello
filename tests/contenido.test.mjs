@@ -117,8 +117,8 @@ test('una selección real puede referenciar un medio y una FAQ puede referenciar
 test('el contacto pendiente no da un destino accionable y se incluye en revisión', async () => {
   const { catalogo, listarPendientes } = await import('../src/data/contenido.ts');
   const { whatsapp } = catalogo.contacto.unidades;
-  assert.equal(whatsapp.estado, 'pendiente');
-  assert.equal('valor' in whatsapp, false);
+  assert.equal(whatsapp.estado, 'provisional');
+  assert.equal(whatsapp.valor, '+54 261 659-3964');
   assert.ok(listarPendientes().find(({ ubicacion }) => ubicacion === 'contacto.canales.whatsapp'));
 });
 

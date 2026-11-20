@@ -1,0 +1,34 @@
+---
+import ConsultaWhatsApp from '../components/ConsultaWhatsApp.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { enlaces, ruta } from './navegacion-revision.ts';
+import { contacto } from '../data/parador.ts';
+import { propuestas } from '../data/propuestas.ts';
+
+export const prerender = false;
+
+const whatsapp = contacto.unidades.whatsapp;
+---
+
+<BaseLayout title="Revisión de navegación · El Camello" enlaces={enlaces} rutaInicio={ruta}>
+  <h1>Revisión de navegación</h1>
+  <p>Vista interna de El Camello para probar el menú y los mensajes de consulta.</p>
+
+  <section class="seccion-revision" id="propuestas" tabindex="-1">
+    <h2>Propuestas</h2>
+    <a href="/revision-navegacion/detalle/">Abrí el detalle de muestra</a>
+  </section>
+
+  <section class="seccion-revision" id="consulta" tabindex="-1">
+    <h2>Mensajes de WhatsApp para revisar</h2>
+    {whatsapp.estado !== 'pendiente' && <p>Número informado: {whatsapp.valor}. Pendiente de verificación en WhatsApp.</p>}
+    <p>Borradores para revisar con la dueña.</p>
+    <div class="consultas-ejemplo">
+      <ConsultaWhatsApp ambito={{ tipo: 'general' }} etiqueta="Consulta general" revision />
+      <ConsultaWhatsApp ambito={{ tipo: 'personalizado' }} etiqueta="Armá tu propuesta" revision />
+      {propuestas.map(({ id, unidades }) => unidades.titulo.estado !== 'pendiente' && (
+        <ConsultaWhatsApp ambito={{ tipo: 'propuesta', id }} etiqueta={unidades.titulo.valor} revision />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

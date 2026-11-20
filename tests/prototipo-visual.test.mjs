@@ -10,9 +10,16 @@ const manifest = new URL('../node_modules/astro/package.json', import.meta.url);
 const astro = fileURLToPath(new URL(JSON.parse(readFileSync(manifest, 'utf8')).bin.astro, manifest));
 const ruta = '/prototipo-visual/';
 const servers = [];
+const sesiones = new Map();
+
+function serving(command) {
+  if (!sesiones.has(command)) sesiones.set(command, start(command));
+  return sesiones.get(command);
+}
 
 function start(command) {
-  const server = spawn(process.execPath, [astro, command, '--host', '127.0.0.1', '--port', '0'], {
+  const flags = command === 'dev' ? ['--ignore-lock'] : [];
+  const server = spawn(process.execPath, [astro, command, '--host', '127.0.0.1', '--port', '0', ...flags], {
     cwd: root,
     env: { ...process.env, NO_COLOR: '1', ASTRO_TELEMETRY_DISABLED: '1' },
     stdio: ['ignore', 'pipe', 'pipe'],
@@ -45,10 +52,10 @@ after(async () => {
   }));
 }, { timeout: 5000 });
 
-const load = (base, path) => fetch(new URL(path, base), { signal: AbortSignal.timeout(10_000) });
+const load = (base, path) => fetch(new URL(path, base), { signal: AbortSignal.timeout(20_000) });
 
 test('en desarrollo la muestra entrega portada y presentación enlazada en el HTML inicial', async () => {
-  const dev = await start('dev');
+  const dev = await serving('dev');
   const response = await load(dev, ruta);
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -69,9 +76,33 @@ test('en desarrollo la muestra entrega portada y presentación enlazada en el HT
 });
 
 test('la vista generada conserva la home y excluye la ruta y los medios del prototipo', async () => {
-  const preview = await start('preview');
+  const preview = await serving('preview');
   assert.equal((await load(preview, ruta)).status, 404);
   assert.match(await (await load(preview, '/')).text(), /Cacheuta, Mendoza/);
   const files = readdirSync(new URL('../dist/', import.meta.url), { recursive: true });
   assert.ok(files.every(path => !/(prototipo-visual|c03-muestra)/i.test(String(path))));
+});
+
+test('la revisión ofrece menú nativo, anclas cruzadas y borradores no accionables', async () => {
+  const dev = await serving('dev');
+  const path = '/revision-navegacion/';
+  const response = await load(dev, path);
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /<details\b[\s\S]*?<summary\b[^>]*>Menú<\/summary>/);
+  assert.match(html, /id="propuestas"/);
+  assert.match(html, /href="\/revision-navegacion\/detalle\//);
+  assert.match(html, /Consulta general[\s\S]*Armá tu propuesta/);
+  assert.doesNotMatch(html, /href="[^"]*wa\.me|<form\b/);
+  const detail = await load(dev, path + 'detalle/');
+  assert.equal(detail.status, 200);
+  assert.match(await detail.text(), /href="\/revision-navegacion\/#propuestas"/);
+});
+
+test('las dos rutas de revisión de navegación quedan fuera del build', async () => {
+  const preview = await serving('preview');
+  for (const route of ['/revision-navegacion/', '/revision-navegacion/detalle/']) {
+    assert.equal((await load(preview, route)).status, 404);
+  }
+  assert.doesNotMatch(await (await load(preview, '/')).text(), /Revisión de navegación|Consulta general/);
 });

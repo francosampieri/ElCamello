@@ -190,7 +190,7 @@ C-06 a C-09 producen componentes o módulos con ownership separado. C-11 es due�
   - [10 — Preguntas abiertas](knowledge-base/10_preguntas_abiertas.md) § «Preguntas abiertas priorizadas» — PA-01, PA-02 y PA-07.
 
 ### [C-05] `estructura-y-navegacion-responsive`
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` implementado, verificado y archivado en `feature/change_5`. Ver [verificación de C-05](openspec/changes/archive/2026-11-20-estructura-y-navegacion-responsive/verification.md). Esta rama parte de C-02 y C-03 archivados. C-04 está archivado y publicado en `feature/change_4` (`b98b04f`), con integración pendiente.
 - **Scope**:
   - Implementar layout, variables CSS acordadas, navegación móvil/desktop, footer y estructura compartida de página, con ownership claro para futuras ramas.
   - Crear enlaces de contacto reutilizables desde los datos controlados: mensaje por propuesta, contacto general y «Armá tu propuesta». Validar codificación con acentos/caracteres especiales y evitar que el contacto general herede una propuesta incorrecta.
