@@ -17,7 +17,7 @@
     "test:smoke": "node --test tests/smoke.test.mjs",
     "test:prototipo": "node --test tests/prototipo-visual.test.mjs",
     "test:navegacion": "node --test tests/navegacion.test.mjs",
-    "test": "npm run test:contenido && node --test tests/medios.test.mjs && npm run test:smoke && npm run test:prototipo && npm run test:navegacion",
+    "test": "npm run test:contenido && node --test tests/medios.test.mjs tests/parador.test.mjs && npm run test:smoke && npm run test:prototipo && npm run test:navegacion",
     "verify": "npm run check && npm run build && npm test"
   },
   "dependencies": {

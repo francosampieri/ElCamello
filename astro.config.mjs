@@ -11,6 +11,7 @@ export default defineConfig({
           injectRoute({ pattern: '/revision-medios', entrypoint: './src/prototipo/RevisionMedios.astro' });
           injectRoute({ pattern: '/revision-navegacion', entrypoint: './src/prototipo/RevisionNavegacion.astro' });
           injectRoute({ pattern: '/revision-navegacion/detalle', entrypoint: './src/prototipo/RevisionDetalle.astro' });
+          injectRoute({ pattern: '/revision-parador', entrypoint: './src/prototipo/RevisionParador.astro' });
         }
       },
     },

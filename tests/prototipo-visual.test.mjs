@@ -54,6 +54,28 @@ after(async () => {
 
 const load = (base, path) => fetch(new URL(path, base), { signal: AbortSignal.timeout(20_000) });
 
+test('la revisión del parador entrega las secciones y rutas locales en su HTML inicial', async () => {
+  const dev = await serving('dev');
+  const response = await load(dev, '/revision-parador/');
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /id="presentacion"[\s\S]*Exclusividad[\s\S]*Paisaje de montaña[\s\S]*Variedad de actividades[\s\S]*Personalización[\s\S]*id="el-parador"/);
+  assert.match(html, /Instalaciones[\s\S]*Habitaciones[\s\S]*pernocte[\s\S]*Actividades/);
+  assert.match(html, /Temporada de verano/);
+  assert.match(html, /Versión en lista/);
+  assert.match(html, /alt="Árboles, guirnaldas y mesas del predio al atardecer"/);
+  assert.match(html, /Borrador para revisar/);
+  assert.doesNotMatch(html, /wa\.me|canchita de fútbol|personal calificado/i);
+});
+
+test('el build mantiene la principal y excluye la revisión del parador', async () => {
+  const preview = await serving('preview');
+  assert.equal((await load(preview, '/revision-parador/')).status, 404);
+  const principal = await load(preview, '/');
+  assert.equal(principal.status, 200);
+  assert.doesNotMatch(await principal.text(), /revision-parador|id="el-parador"|id="presentacion"/);
+});
+
 test('en desarrollo la muestra entrega portada y presentación enlazada en el HTML inicial', async () => {
   const dev = await serving('dev');
   const response = await load(dev, ruta);

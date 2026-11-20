@@ -1,0 +1,33 @@
+---
+import { leerPresentacion } from '../data/presentacion-parador.ts';
+
+const { revision = false } = Astro.props as { revision?: boolean };
+const { fortalezas, introduccion } = leerPresentacion(revision);
+---
+
+<section class="presentacion" id="presentacion" aria-labelledby="titulo-presentacion" tabindex="-1">
+  <h2 id="titulo-presentacion">Un lugar para compartir la montaña</h2>
+  <div>
+    {introduccion && (
+      <p>
+        {introduccion.estado === 'provisional' && <small>Borrador para revisar</small>}
+        {introduccion.valor}
+      </p>
+    )}
+    <ul>
+      {fortalezas.map(fortaleza => <li>{fortaleza}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .presentacion { padding-block: clamp(1.75rem, 7vw, 4rem); border-block-start: .25rem solid var(--energia); }
+  h2 { font-size: clamp(1.8rem, 4vw, 3.15rem); line-height: 1.08; letter-spacing: -.035em; margin: 0 0 1rem; max-inline-size: 17ch; }
+  p { max-inline-size: 55ch; margin-block: 0 1.4rem; font-size: 1.06rem; }
+  small { display: block; color: var(--accion); font-weight: 700; margin-block-end: .35rem; }
+  ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); gap: .65rem 1rem; padding-inline-start: 1.15rem; margin: 0; }
+  li::marker { color: var(--energia); }
+  @media (min-width: 52rem) {
+    .presentacion { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 2.5rem; }
+  }
+</style>

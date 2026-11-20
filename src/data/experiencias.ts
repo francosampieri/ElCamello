@@ -5,25 +5,28 @@ const medios = () => pendiente('Seleccionar medios en C-04.', { responsable: 'Fr
 
 type Espacio = Vínculos & {
   id: string;
-  unidades: { titulo: Unidad<string>; descripcion: Unidad<string>; medios: Unidad<readonly string[]> };
+  unidades: { titulo: Unidad<string>; descripcion: Unidad<string>; medios: Unidad<readonly string[]>; temporada?: Unidad<string> };
 };
 
-function espacio(id: string, titulo: string, descripcion: string, fotos?: readonly string[]): Espacio {
+function espacio(id: string, titulo: string, descripcion: string | Unidad<string>, fotos?: readonly string[], temporada?: string): Espacio {
   return {
     id,
     unidades: {
       titulo: confirmado(titulo, relevamiento),
-      descripcion: provisional(descripcion, 'Revisar la descripción para la web.', origenComercial),
+      descripcion: typeof descripcion === 'string'
+        ? provisional(descripcion, 'Revisar la descripción para la web.', origenComercial)
+        : descripcion,
       medios: fotos ? provisional(fotos, 'Comprobar el encuadre en las instalaciones.', { responsable: 'Franco' }) : medios(),
+      ...(temporada ? { temporada: confirmado(temporada, relevamiento) } : {}),
     },
   };
 }
 
 export const instalaciones = [
-  espacio('sector-acuatico', 'Pileta y sector acuático', 'Pileta, toboganes y jacuzzi de agua fría para la temporada de verano.', ['pileta-deck']),
+  espacio('sector-acuatico', 'Pileta y sector acuático', 'Pileta, toboganes y jacuzzi de agua fría.', ['pileta-deck'], 'Temporada de verano'),
   espacio('quinchos-y-parrillas', 'Parrillas y espacios para comer', 'Dos parrillas, mesas y sillas para compartir la comida del grupo.'),
   espacio('cocina', 'Cocina equipada', 'Horno, horno pizzero, heladeras, vajilla y utensilios.'),
-  espacio('habitaciones', 'Habitaciones', 'Cuatro habitaciones con 16 camas como referencia del relevamiento. El pernocte se consulta por separado.'),
+  espacio('habitaciones', 'Habitaciones', confirmado('El pernocte es una posibilidad adicional para consultar por separado.', 'knowledge-base/05_reglas_de_negocio.md#rn-of-05')),
   espacio('servicios', 'Servicios del predio', 'Espacios cubiertos, baños y estacionamiento.'),
 ];
 

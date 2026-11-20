@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Presentacion from '../components/Presentacion.astro';
+import ElParador from '../components/ElParador.astro';
+import ConsultaWhatsApp from '../components/ConsultaWhatsApp.astro';
+import { destinosHabilitados, inicio } from '../data/navegacion.ts';
+
+export const prerender = false;
+
+const ruta = '/revision-parador/';
+const destinos = [
+  inicio,
+  { id: 'presentacion', etiqueta: 'Presentación', ruta, fragmento: 'presentacion' },
+  { id: 'el-parador', etiqueta: 'El Parador', ruta, fragmento: 'el-parador' },
+];
+const enlaces = destinosHabilitados(destinos, destinos.map(destino => destino.id));
+const enLista = Astro.url.searchParams.get('vista') === 'lista';
+---
+
+<BaseLayout title="Revisión del parador · El Camello" enlaces={enlaces}>
+  <h1>Revisión del parador</h1>
+  <Presentacion revision />
+  <ElParador revision enLista={enLista} urlModoGaleria={ruta + (enLista ? '' : '?vista=lista') + '#fotos-parador'} />
+  <div class="salida-parador">
+    <ConsultaWhatsApp ambito={{ tipo: 'general' }} etiqueta="Consultar por WhatsApp" />
+    <a href="/">Volver al inicio</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .salida-parador { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-block-start: 1.5rem; }
+  .salida-parador > a { display: inline-flex; align-items: center; min-block-size: 44px; }
+</style>

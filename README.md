@@ -92,6 +92,12 @@ Ejecutá `npm run dev` y abrí `/prototipo-visual/` en la dirección que indique
 
 Ver [registro de revisión de C-03](openspec/changes/archive/2026-11-20-direccion-visual-y-prototipo/revision-visual.md) para los criterios, las fotos de muestra y las decisiones que esperan revisión.
 
+## Revisar la presentación y El Parador
+
+Ejecutá `npm run dev` y abrí `/revision-parador/` en la dirección que muestre Astro. Los enlaces `#presentacion` y `#el-parador` permiten entrar a cada sección. La galería incluye una versión en lista. Los textos rotulados «Borrador para revisar» se leen solo en esta revisión.
+
+C-11 montará [Presentación](src/components/Presentacion.astro) y [El Parador](src/components/ElParador.astro) después de portada y antes de propuestas. La ruta de revisión devuelve 404 en el build público. Ver [pruebas y traspaso de C-06](openspec/changes/archive/2026-11-20-presentacion-y-el-parador/verification.md).
+
 ## Documentación de partida
 
 - [Estructura del sitio](documentacion/estructura-web.md).

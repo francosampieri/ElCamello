@@ -45,6 +45,8 @@ Los componentes Astro organizan contenido y estructura. El CSS de cada component
 
 Las galerías, transiciones y recursos de scroll se seleccionarán mediante pruebas con el material real. La arquitectura debe permitir adaptar encuadre e interacción para móvil y desktop. No se elige todavía librería de animación, navegación con transiciones especiales ni tecnología 3D.
 
+C-06 entrega `Presentacion.astro` y `ElParador.astro` para C-11. Leen del catálogo con proyección confirmada por defecto y borradores identificados en desarrollo. La galería usa fotografías de contexto con rótulos y conserva las fichas de los espacios sin foto. Las anclas estables son `presentacion` y `el-parador`. Ver [revisión y composición](../README.md#revisar-la-presentación-y-el-parador).
+
 ## Tratamiento de medios
 
 Las fotografías seleccionadas se importan desde `src/assets/medios` y Astro prepara las salidas. Los archivos de `public` se sirven sin ese procesamiento automático. C-04 verificó los primeros tres derivados y los enlazó al catálogo con detalles de contexto y revisión. Ver [faltantes por sección](../documentacion/revision-medios/faltantes-c04.md) y [pedido de portada](../documentacion/revision-medios/pedido-portada.md).

@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { fotosDeContexto, leerEspacios } from '../data/presentacion-parador.ts';
+
+interface Props {
+  revision?: boolean;
+  enLista?: boolean;
+  urlModoGaleria?: string;
+}
+
+const { revision = false, enLista = false, urlModoGaleria } = Astro.props;
+const grupos = leerEspacios(revision);
+const archivos = import.meta.glob<ImageMetadata>('../assets/medios/*.webp', { eager: true, import: 'default' });
+const ruta = (referencia: string) => `../assets/medios/${referencia}`;
+const fotos = fotosDeContexto(referencia => !!archivos[ruta(referencia)]);
+---
+
+<section id="el-parador" aria-labelledby="titulo-el-parador" tabindex="-1">
+  <header class="banda">
+    <h2 id="titulo-el-parador">El Parador</h2>
+  </header>
+
+  {fotos.length > 0 && (
+    <div id="fotos-parador" class="fotos" tabindex="-1">
+      <h3>Vistas del predio y su entorno</h3>
+      <ul class="atajos" aria-label="Ir a una vista">
+        {fotos.map(foto => <li><a href={`#vista-${foto.id}`}>{foto.rotulo}</a></li>)}
+      </ul>
+      {urlModoGaleria && <a class="modo" href={urlModoGaleria}>{enLista ? 'Versión horizontal' : 'Versión en lista'}</a>}
+      <ul class:list={['galeria', { 'en-lista': enLista }]} aria-label="Fotografías de contexto">
+        {fotos.map(foto => (
+          <li id={`vista-${foto.id}`} tabindex="-1">
+            <figure>
+              <Image src={archivos[ruta(foto.referencia)]} alt={foto.textoAlternativo} width={960}
+                widths={[480, 960]} sizes={enLista ? '90vw' : '(min-width: 800px) 45vw, 79vw'} format="webp" quality={76} />
+              <figcaption>{foto.rotulo}</figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  <div class="grupos">
+    {Object.entries(grupos).map(([id, espacios]) => (
+      <section aria-labelledby={`titulo-${id}`}>
+        <h3 id={`titulo-${id}`}>{id === 'instalaciones' ? 'Instalaciones' : 'Actividades'}</h3>
+        <ul class="espacios">
+          {espacios.map(({ titulo, temporada, descripcion }) => (
+            <li>
+              <h4>{titulo}</h4>
+              {temporada && <p class="temporada">{temporada}</p>}
+              {descripcion && (
+                <p>{descripcion.estado === 'provisional' && <small>Borrador para revisar</small>}{descripcion.valor}</p>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</section>
+
+<style>
+  .banda { background: var(--energia); color: var(--blanco); padding: clamp(1rem, 4vw, 2rem); }
+  h2 { font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.03; letter-spacing: -.045em; margin: 0; }
+  h3 { font-size: clamp(1.2rem, 3vw, 1.7rem); line-height: 1.16; margin: 0 0 .6rem; }
+  .fotos { padding-block: 1.5rem 2rem; }
+  .atajos { display: flex; flex-wrap: wrap; column-gap: 1rem; padding: 0; margin: 0; list-style: none; }
+  .atajos a, .modo { min-block-size: 44px; display: inline-flex; align-items: center; }
+  .galeria { margin: .6rem 0 0; padding: .35rem; list-style: none; display: grid; gap: .85rem; grid-auto-flow: column; grid-auto-columns: 84%; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-inline: .4rem; }
+  .galeria li { scroll-snap-align: start; min-inline-size: 0; }
+  .galeria li:focus { outline: 2px solid var(--accion); outline-offset: 2px; }
+  .galeria.en-lista { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: minmax(0, 1fr); overflow: visible; scroll-snap-type: none; }
+  figure { margin: 0; }
+  img { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 3 / 2; object-fit: cover; background: var(--superficie); }
+  figcaption { padding-block: .45rem; font-weight: 700; }
+  .grupos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: 1.5rem 2.5rem; }
+  .espacios { list-style: none; padding: 0; margin: 1rem 0 0; }
+  .espacios li { border-block-start: 1px solid color-mix(in srgb, var(--tinta) 23%, transparent); padding-block: .75rem; }
+  h4, p { margin: 0; }
+  small { display: block; color: var(--accion); font-weight: 700; }
+  .temporada { font-weight: 700; color: var(--accion); }
+  @media (min-width: 50rem) {
+    .galeria { grid-auto-columns: calc((100% - .85rem) / 2); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .galeria { scroll-behavior: auto; scroll-snap-type: none; }
+  }
+</style>
