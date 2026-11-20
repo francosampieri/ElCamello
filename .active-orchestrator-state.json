@@ -196,7 +196,8 @@
       "Respetar alcance y contenido confirmados, documentación en español.",
       "Actualizar autónomamente KB y documentos con versiones, comandos, estados, pendientes resueltos y enlaces verificados; informar al cierre sin presentar datos inventados como hechos. El contenido provisional autorizado para desarrollo debe quedar identificado y registrado, sin equivaler a aprobación comercial o de publicación.",
       "Corregir o retirar obsolescencia documental inequívoca con evidencia; consultar eliminaciones ambiguas o con riesgo de perder histórico útil, preservando decisiones vigentes y antecedentes.",
-      "Presentar todas las alternativas viables y relevantes, sus ventajas, desventajas e impactos pertinentes, con recomendación justificada e incertidumbres."
+      "Presentar todas las alternativas viables y relevantes, sus ventajas, desventajas e impactos pertinentes, con recomendación justificada e incertidumbres.",
+      "Entregar cada propuesta con una explicación detallada en el chat del objetivo, alcance, implementación, comportamiento esperado, decisiones, dependencias, verificaciones y pendientes."
     ]
   }
 }
