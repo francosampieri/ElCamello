@@ -187,15 +187,16 @@
     "reglas_applied": [
       "Una rama feature/change_x por change, con número sin cero inicial.",
       "Nunca commit, push o merge sin pedido o confirmación explícita.",
-      "Consultar decisiones abiertas, inferir lo mínimo y no reabrir decisiones aprobadas.",
+      "Consultar decisiones que requieren criterio humano o tienen ambigüedad material; ejecutar tareas mecánicas sobre hechos verificados y decisiones aprobadas sin nueva confirmación, respetando permisos específicos.",
       "TypeScript estricto; consultar cualquier excepción necesaria de any.",
       "Astro, CSS estándar y JavaScript puntual; consultar antes de incorporar React o bibliotecas adicionales.",
       "Respetar movimiento reducido y mantener información y contacto accesibles sin completar animaciones.",
       "Impacto visual central, prioridad móvil y presentación desktop cuidada.",
       "Solo recursos gratuitos; fotos seleccionadas en repo y originales protegidos fuera.",
       "Respetar alcance y contenido confirmados, documentación en español.",
-      "Al cerrar trabajo pertinente, revisar impacto documental y recordar a Franco qué se actualizó o requiere actualización, sin omitir actualizaciones autorizadas ni inventar datos pendientes.",
-      "Revisar vigencia y relevancia de KB y documentos; presentar archivos, datos y motivo, y pedir confirmación antes de eliminar información, preservando histórico útil."
+      "Actualizar autónomamente KB y documentos con versiones, comandos, estados, pendientes resueltos y enlaces verificados; informar al cierre lo actualizado y las decisiones pendientes, sin inventar datos.",
+      "Corregir o retirar obsolescencia documental inequívoca con evidencia; consultar eliminaciones ambiguas o con riesgo de perder histórico útil, preservando decisiones vigentes y antecedentes.",
+      "Presentar todas las alternativas viables y relevantes, sus ventajas, desventajas e impactos pertinentes, con recomendación justificada e incertidumbres."
     ]
   }
 }
