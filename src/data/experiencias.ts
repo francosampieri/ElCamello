@@ -8,19 +8,19 @@ type Espacio = Vínculos & {
   unidades: { titulo: Unidad<string>; descripcion: Unidad<string>; medios: Unidad<readonly string[]> };
 };
 
-function espacio(id: string, titulo: string, descripcion: string): Espacio {
+function espacio(id: string, titulo: string, descripcion: string, fotos?: readonly string[]): Espacio {
   return {
     id,
     unidades: {
       titulo: confirmado(titulo, relevamiento),
       descripcion: provisional(descripcion, 'Revisar la descripción para la web.', origenComercial),
-      medios: medios(),
+      medios: fotos ? provisional(fotos, 'Comprobar el encuadre en las instalaciones.', { responsable: 'Franco' }) : medios(),
     },
   };
 }
 
 export const instalaciones = [
-  espacio('sector-acuatico', 'Pileta y sector acuático', 'Pileta, toboganes y jacuzzi de agua fría para la temporada de verano.'),
+  espacio('sector-acuatico', 'Pileta y sector acuático', 'Pileta, toboganes y jacuzzi de agua fría para la temporada de verano.', ['pileta-deck']),
   espacio('quinchos-y-parrillas', 'Parrillas y espacios para comer', 'Dos parrillas, mesas y sillas para compartir la comida del grupo.'),
   espacio('cocina', 'Cocina equipada', 'Horno, horno pizzero, heladeras, vajilla y utensilios.'),
   espacio('habitaciones', 'Habitaciones', 'Cuatro habitaciones con 16 camas como referencia del relevamiento. El pernocte se consulta por separado.'),

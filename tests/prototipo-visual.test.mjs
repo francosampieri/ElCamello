@@ -71,7 +71,23 @@ test('en desarrollo la muestra entrega portada y presentación enlazada en el HT
 test('la vista generada conserva la home y excluye la ruta y los medios del prototipo', async () => {
   const preview = await start('preview');
   assert.equal((await load(preview, ruta)).status, 404);
+  assert.equal((await load(preview, '/revision-medios/')).status, 404);
   assert.match(await (await load(preview, '/')).text(), /Cacheuta, Mendoza/);
   const files = readdirSync(new URL('../dist/', import.meta.url), { recursive: true });
   assert.ok(files.every(path => !/(prototipo-visual|c03-muestra)/i.test(String(path))));
+});
+
+test('Astro sirve una variante WebP optimizada de una foto real para la revisión interna', async () => {
+  const dev = await start('dev');
+  const page = await load(dev, '/revision-medios/');
+  assert.equal(page.status, 200);
+  const html = await page.text();
+  const img = html.match(/<img\b[^>]*\bsrc="([^"]+)"[^>]*>/);
+  assert.ok(img, 'Falta la imagen preparada por Astro');
+  const url = img[1].replaceAll('&amp;', '&');
+  const response = await load(dev, url);
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get('content-type'), /^image\/webp/);
+  const data = Buffer.from(await response.arrayBuffer());
+  assert.equal(data.subarray(8, 12).toString('ascii'), 'WEBP');
 });

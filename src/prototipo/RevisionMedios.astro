@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { medios, resolverFoto } from '../data/medios.ts';
+
+const archivos = import.meta.glob<ImageMetadata>('../assets/medios/*.webp', { eager: true, import: 'default' });
+const fotos = medios.flatMap(({ id }) => {
+  const foto = resolverFoto(id);
+  if (!foto) return [];
+  const imagen = archivos[`../assets/medios/${foto.referencia}`];
+  if (!imagen) throw new Error(`Falta el derivado de ${id}: ${foto.referencia}`);
+  return [{ id, ...foto, imagen }];
+});
+---
+
+<BaseLayout title="Revisión de medios de El Camello">
+  <main>
+    <h1>Revisión de medios</h1>
+    <div class="fotos">
+      {fotos.map(({ imagen, textoAlternativo }) => (
+        <figure>
+          <Image src={imagen} alt={textoAlternativo} width={960} widths={[480, 960]} sizes="(min-width: 800px) 31vw, 94vw" format="webp" quality={76} />
+          <figcaption>{textoAlternativo}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  main { background: #faeacb; color: #252716; padding: clamp(1rem, 3vw, 2.5rem); max-inline-size: 80rem; margin: auto; }
+  .fotos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); gap: 1rem; }
+  figure { margin: 0; }
+  img { width: 100%; height: auto; display: block; }
+  figcaption { margin-block-start: .5rem; }
+</style>

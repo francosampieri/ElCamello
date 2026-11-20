@@ -47,7 +47,7 @@ Las galerías, transiciones y recursos de scroll se seleccionarán mediante prue
 
 ## Tratamiento de medios
 
-Las fotografías seleccionadas se importarán desde `src/assets` y se utilizarán herramientas de imágenes de Astro para las salidas adecuadas. Los archivos de `public` se sirven sin ese procesamiento automático. El catálogo de medios debe permitir encontrar su contexto y aprobación.
+Las fotografías seleccionadas se importan desde `src/assets/medios` y Astro prepara las salidas. Los archivos de `public` se sirven sin ese procesamiento automático. C-04 verificó los primeros tres derivados y los enlazó al catálogo con detalles de contexto y revisión. Ver [faltantes por sección](../documentacion/revision-medios/faltantes-c04.md) y [pedido de portada](../documentacion/revision-medios/pedido-portada.md).
 
 Los videos requieren exportación y compresión específicas; Astro no sustituye esa preparación. Se evaluarán peso, calidad, carga móvil y cuotas del proveedor antes de fijar alojamiento. El diseño de portada elegirá la versión horizontal o vertical apropiada y mantendrá un respaldo estático.
 

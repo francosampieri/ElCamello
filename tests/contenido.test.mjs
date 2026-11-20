@@ -79,8 +79,14 @@ test('cambiar un nombre de ejemplo conserva la identidad y ambos consumidores le
 
 test('el catálogo admite que toda la selección audiovisual siga pendiente', async () => {
   const { catalogo, validarCatalogo, listarPendientes } = await import('../src/data/contenido.ts');
-  assert.deepEqual(catalogo.medios, []);
-  assert.deepEqual(validarCatalogo(), []);
+  const { pendiente } = await import('../src/data/editorial.ts');
+  const sinMedios = coleccion => coleccion.map(registro => registro.unidades.medios ? {
+    ...registro, unidades: { ...registro.unidades, medios: pendiente('Selección aún sin confirmar') },
+  } : registro);
+  assert.deepEqual(validarCatalogo({
+    ...catalogo, medios: [], propuestas: sinMedios(catalogo.propuestas),
+    instalaciones: sinMedios(catalogo.instalaciones), actividades: sinMedios(catalogo.actividades),
+  }), []);
   assert.ok(listarPendientes().some(({ ubicacion }) => ubicacion === 'instalaciones.habitaciones.medios'));
 });
 
@@ -110,7 +116,7 @@ test('una selección real puede referenciar un medio y una FAQ puede referenciar
   const [faq] = catalogo.faqs;
   assert.deepEqual(validarCatalogo({ ...catalogo, propuestas: [propuesta],
     faqs: [{ ...faq, referencias: { propuestas: ['empresas'] } }],
-    medios: [{ id: 'foto-real', recurso: { tipo: 'imagen', referencia: 'fixture-de-prueba' }, unidades: {} }],
+    medios: [...catalogo.medios, { id: 'foto-real', recurso: { tipo: 'imagen', referencia: 'fixture-de-prueba' }, unidades: {} }],
   }), []);
 });
 

@@ -8,6 +8,7 @@ export default defineConfig({
       'astro:config:setup': ({ command, injectRoute }) => {
         if (command === 'dev') {
           injectRoute({ pattern: '/prototipo-visual', entrypoint: './src/prototipo/Comparador.astro' });
+          injectRoute({ pattern: '/revision-medios', entrypoint: './src/prototipo/RevisionMedios.astro' });
         }
       },
     },

@@ -70,7 +70,9 @@ node --input-type=module -e "import { listarPendientes } from './src/data/conten
 
 Por ejemplo, la entrada `propuestas.empresas.titulo` apunta a la unidad `titulo` en [propuestas.ts](src/data/propuestas.ts). Al confirmar el título, sustituí la unidad por `confirmado('Nombre acordado', 'Validación de la dueña')`. La consulta devolverá su valor nuevo y el inventario dejará de mostrar esa entrada. El resto de las revisiones seguirá en el inventario. Los ejemplos de horarios, capacidades, contactos, precios y slugs conservan las validaciones comerciales y editoriales indicadas en [preguntas abiertas](knowledge-base/10_preguntas_abiertas.md).
 
-`validarCatalogo()` informa IDs duplicados o referencias rotas con su ubicación. Una selección de medios `pendiente` carece de ID y figura en el inventario editorial. Una selección con IDs exige que cada uno exista en el catálogo. C-04 incorporará las exportaciones web seleccionadas. La distribución de videos se evaluará con esas exportaciones.
+`validarCatalogo()` informa IDs duplicados o referencias rotas con su ubicación. Una selección de medios `pendiente` carece de ID y figura en el inventario editorial. Una selección con IDs exige que cada uno exista en el catálogo. C-04 incorpora tres derivados WebP en `src/assets/medios/` y sus referencias en el catálogo. La distribución de videos se evaluará en C-09 con exportaciones H/V reales.
+
+Con `npm run dev`, abrí `/revision-medios/` en la dirección que indique Astro para ver la salida optimizada de las fotos. El [pedido de portada](documentacion/revision-medios/pedido-portada.md), el [mapa de faltantes](documentacion/revision-medios/faltantes-c04.md) y la [ficha de C-09](documentacion/revision-medios/ficha-evaluacion-c09.md) documentan el material y sus próximas revisiones.
 
 La [verificación de C-02](openspec/changes/archive/2026-11-20-contenido-centralizado/verification.md) registra las pruebas y el control negativo del flujo.
 
