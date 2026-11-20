@@ -74,6 +74,14 @@ Por ejemplo, la entrada `propuestas.empresas.titulo` apunta a la unidad `titulo`
 
 La [verificación de C-02](openspec/changes/archive/2026-11-20-contenido-centralizado/verification.md) registra las pruebas y el control negativo del flujo.
 
+## Revisar las direcciones visuales
+
+Ejecutá `npm run dev` y abrí `/prototipo-visual/` en la dirección que indique Astro. La página abre con **Aventura**, la dirección que eligió Franco. Podés seguir comparándola con **Encuentro** y **Paisaje** sobre las mismas fotos y el mismo texto. «Qué cambia» detalla el tratamiento de cada opción. La [identidad visual web](knowledge-base/11_identidad_visual.md) recoge los roles de color, la tipografía y los criterios para los próximos changes.
+
+`npm run build` genera la página pública. La dirección de revisión devuelve HTTP 404 en la vista previa de ese build. `npm run verify` incluye la prueba de ese aislamiento, el estado del selector y la navegación básica por anclas.
+
+Ver [registro de revisión de C-03](openspec/changes/archive/2026-11-20-direccion-visual-y-prototipo/revision-visual.md) para los criterios, las fotos de muestra y las decisiones que esperan revisión.
+
 ## Documentación de partida
 
 - [Estructura del sitio](documentacion/estructura-web.md).

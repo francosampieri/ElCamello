@@ -19,7 +19,7 @@ Cada change se trabaja en su propia rama `feature/change_x`, usando su número s
 
 Este roadmap cubre el lanzamiento en español de la principal y cuatro páginas de propuestas. Conserva Astro, TypeScript, CSS estándar, React selectivo, contenido compartido en TypeScript y fotografías seleccionadas dentro del repositorio. Los originales quedan fuera. Agenda, analítica, cuentas, CMS, reservas automáticas y pagos no son dependencias del lanzamiento.
 
-Al 20/11/2026, C-01 y C-02 están archivados y sus requisitos están en las especificaciones principales. C-03 a C-13 siguen pendientes. Consultar el CLI para recuperar el estado vigente.
+Al 20/11/2026, C-01 y C-02 están archivados y sus requisitos están en las especificaciones principales. C-03 terminó el apply con Aventura elegida por Franco y sus criterios documentados. C-04 a C-13 siguen pendientes. Consultar el CLI para recuperar el estado vigente.
 
 La dirección visual inicial es parte central del producto y se valida temprano. Los efectos concretos, las tipografías y la distribución de videos se deciden mediante pruebas; no se presupone 3D, contracción de portada, Cloudinary ni una librería. Solo se usan recursos gratuitos. El objetivo expresado de un mes a un mes y medio orienta la priorización, sin convertir este grafo en una estimación temporal.
 
@@ -157,7 +157,7 @@ C-06 a C-09 producen componentes o módulos con ownership separado. C-11 es due�
   - [10 — Preguntas abiertas](knowledge-base/10_preguntas_abiertas.md) § «Preguntas abiertas priorizadas» — PA-04 a PA-10.
 
 ### [C-03] `direccion-visual-y-prototipo`
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` archivado, implementado y verificado en `feature/change_3`. Ver [registro de revisión de C-03](openspec/changes/archive/2026-11-20-direccion-visual-y-prototipo/revision-visual.md) e [identidad visual](knowledge-base/11_identidad_visual.md).
 - **Scope**:
   - Proponer aplicación de marca, tipografías gratuitas, escala tipográfica, espacios y variables CSS para móvil y desktop; presentar la dirección a Franco y recoger la revisión de identidad indicada por la KB.
   - Construir una muestra acotada de portada/presentación y una interacción de galería o scroll con material representativo provisional. Usar las referencias por sus principios, sin comprar componentes ni copiar un posicionamiento premium.

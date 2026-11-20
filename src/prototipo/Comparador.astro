@@ -1,0 +1,135 @@
+---
+import { identidad } from '../data/parador.ts';
+import type { Unidad } from '../data/editorial.ts';
+import sello from './medios/c03-muestra-sello.webp?url';
+import portada from './medios/c03-muestra-portada.webp?url';
+import portadaChica from './medios/c03-muestra-portada-720.webp?url';
+import pileta from './medios/c03-muestra-pileta.webp?url';
+import montana from './medios/c03-muestra-montana.webp?url';
+import jardin from './medios/c03-muestra-jardin.webp?url';
+import './comparador.css';
+
+export const prerender = false;
+
+function valor<T>(unidad: Unidad<T>): T | undefined {
+  return unidad.estado === 'pendiente' ? undefined : unidad.valor;
+}
+const nombre = valor(identidad.unidades.nombre) ?? 'El Camello';
+const localidad = valor(identidad.unidades.localidad);
+const presentacion = valor(identidad.unidades.presentacion);
+const fortalezas = valor(identidad.unidades.fortalezas) ?? [];
+const opciones = [
+  {
+    id: 'encuentro', titulo: 'Encuentro',
+    idea: 'Crema y naranja, con un título de trazos redondos y una foto amplia.',
+    balance: 'Se siente cercano y mantiene el texto fácil de leer. El color aparece en puntos concretos, así que la imagen aporta buena parte del impacto.',
+    tipos: 'Trebuchet MS + tipografía del sistema',
+    colores: ['#f3e2bf', '#fffaec', '#9b3610', '#1b3428', '#d65c22'],
+  },
+  {
+    id: 'aventura', titulo: 'Aventura',
+    idea: 'Crema para la portada y la lectura, naranja quemado en instalaciones y petróleo para la acción principal. Titulares gruesos de formas directas.',
+    balance: 'La base crema deja respirar la foto. El naranja recupera la energía al entrar a las actividades y el petróleo hace reconocibles las acciones.',
+    tipos: 'Arial Black + tipografía del sistema',
+    colores: ['#FAEACB', '#A93B12', '#00666A', '#252716', '#FFFFFF'],
+  },
+  {
+    id: 'paisaje', titulo: 'Paisaje',
+    idea: 'Verde pino y turquesa del logo, con la foto ocupando toda la portada.',
+    balance: 'Destaca la montaña y deja una primera impresión más serena. Depende de buenos encuadres y de cuidar el contraste en cada imagen.',
+    tipos: 'Georgia + tipografía del sistema',
+    colores: ['#f0e3c7', '#fff8e8', '#244136', '#11575a', '#ed9b44'],
+  },
+];
+const estilo = Astro.url.searchParams.get('estilo') ?? 'aventura';
+const actual = opciones.find(opcion => opcion.id === estilo) ?? opciones[1];
+const fotos = [
+  { id: 'pileta', imagen: pileta, titulo: 'Pileta', texto: 'El sector acuático rodeado de vegetación.', alt: 'Pileta del parador junto al deck y los árboles' },
+  { id: 'montana', imagen: montana, titulo: 'Entorno de montaña', texto: 'El paisaje que rodea al parador.', alt: 'Montaña y vegetación de Cacheuta' },
+  { id: 'jardin', imagen: jardin, titulo: 'Espacios al aire libre', texto: 'Lugares para encontrarse y disfrutar de una pausa.', alt: 'Hamaca bajo los árboles del parador' },
+];
+---
+
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Dirección visual · {nombre}</title>
+  </head>
+  <body>
+    <a class="salto" href="#contenido">Saltar al contenido</a>
+    <aside class="revision" aria-label="Comparar direcciones visuales">
+      <div class="revision__interno">
+        <div class="revision__barra">
+          <span>Revisión de diseño</span>
+          <nav aria-label="Variantes visuales">
+            {opciones.map(opcion => (
+              <a href={`?estilo=${opcion.id}`} aria-current={actual.id === opcion.id ? 'page' : undefined}>{opcion.titulo}</a>
+            ))}
+          </nav>
+        </div>
+        <details>
+          <summary>Qué cambia en {actual.titulo}</summary>
+          <div class="revision__detalle">
+            <div><p>{actual.idea}</p><p>{actual.balance}</p></div>
+            <div>
+              <ul class="muestras" aria-label="Paleta de la variante">
+                {actual.colores.map(color => <li><span style={`--muestra:${color}`}></span><code>{color}</code></li>)}
+              </ul>
+              <p class="tipos">{actual.tipos}</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </aside>
+    <main id="contenido" class="sitio" data-estilo={actual.id} tabindex="-1">
+      <header class="marca">
+        <a href="#inicio" aria-label="Volver a la portada de El Camello">
+          <img src={sello} width="48" height="48" alt="" />
+          <span>El Camello<small>Cacheuta, Mendoza</small></span>
+        </a>
+        <a href="#instalaciones">Instalaciones</a>
+      </header>
+
+      <section class="portada" id="inicio" aria-labelledby="titulo">
+        <div class="portada__foto">
+          <img src={portada} srcset={`${portadaChica} 720w, ${portada} 1440w`} sizes="(max-width: 720px) 100vw, 1000px"
+            alt="El predio del parador entre árboles y luces de guirnalda" width="1440" height="960" fetchpriority="high" />
+        </div>
+        <div class="portada__texto">
+          {localidad && <p class="lugar">{localidad}</p>}
+          <h1 id="titulo">{nombre}</h1>
+          <p class="bajada">Un día de montaña para compartir.</p>
+          <a class="accion" href="#presentacion">Conocé el parador <span aria-hidden="true">↓</span></a>
+        </div>
+      </section>
+
+      <section id="presentacion" class="presentacion bloque" aria-labelledby="titulo-presentacion">
+        <h2 id="titulo-presentacion">La montaña, a su manera.</h2>
+        <div>
+          {presentacion && <p>{presentacion}</p>}
+          {fortalezas.length > 0 && <ul class="fortalezas">{fortalezas.map(fortaleza => <li>{fortaleza}</li>)}</ul>}
+        </div>
+      </section>
+
+      <section id="instalaciones" class="instalaciones bloque" aria-labelledby="titulo-instalaciones">
+        <h2 id="titulo-instalaciones">El lugar por dentro</h2>
+        <nav class="galeria-nav" aria-label="Ir a una imagen">
+          {fotos.map(foto => <a href={`#foto-${foto.id}`}>{foto.titulo}</a>)}
+        </nav>
+        <ul class="galeria" aria-label="Galería de instalaciones" tabindex="0">
+          {fotos.map(foto => (
+            <li id={`foto-${foto.id}`} tabindex="-1">
+              <img src={foto.imagen} alt={foto.alt} loading="lazy" width="720" height="480" />
+              <h3>{foto.titulo}</h3>
+              <p>{foto.texto}</p>
+            </li>
+          ))}
+        </ul>
+        <a class="volver" href="#inicio">Volver a la portada ↑</a>
+      </section>
+    </main>
+  </body>
+</html>

@@ -16,6 +16,7 @@ Base de conocimiento construida de forma interactiva con Franco Sampieri. Recoge
 | [08 — Arquitectura propuesta](08_arquitectura_propuesta.md) | Componentes, carpetas, estilos, medios y despliegue. |
 | [09 — Decisiones y supuestos](09_decisiones_y_supuestos.md) | Decisiones aprobadas, alternativas y supuestos pendientes de validar. |
 | [10 — Preguntas abiertas](10_preguntas_abiertas.md) | Pendientes priorizados, responsables y momento de resolución. |
+| [11 — Identidad visual web](11_identidad_visual.md) | Dirección aprobada por Franco, roles de color, tipografía y continuidad entre changes. |
 
 ## Lectura rápida para desarrolladores
 
@@ -23,7 +24,7 @@ Base de conocimiento construida de forma interactiva con Franco Sampieri. Recoge
 2. Entender las decisiones técnicas: [02](02_descripcion_general.md), [08](08_arquitectura_propuesta.md) y [09](09_decisiones_y_supuestos.md).
 3. Entender contenido y condiciones: [04](04_modelo_de_datos.md) y [05](05_reglas_de_negocio.md).
 4. Preparar implementación: [06](06_funcionalidades.md) y [07](07_flujos_principales.md).
-5. Revisar lo todavía abierto antes de construir o publicar: [10](10_preguntas_abiertas.md).
+5. Aplicar la [identidad visual](11_identidad_visual.md) y revisar lo todavía abierto antes de construir o publicar: [10](10_preguntas_abiertas.md).
 
 ## Resumen ejecutivo
 

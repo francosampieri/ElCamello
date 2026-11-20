@@ -10,7 +10,7 @@ Las tecnologías y versiones verificadas están en [02](02_descripcion_general.m
 | Componentes reutilizables | Navegación, tarjetas, botones, FAQs y estructuras de propuesta. | Mantener consistencia y facilitar cambios. |
 | Datos separados de presentación | Módulos TypeScript. | Reutilizar una fuente de contenido entre principal y detalle. |
 | Interactividad selectiva | Componentes que requieran JavaScript o React. | Incorporar comportamiento donde aporte valor. |
-| Variables de diseño | Colores, espacios y tipografías compartidos. | Adaptar la identidad con CSS estándar. |
+| Variables de diseño | Colores, espacios y tipografías compartidos. | Aplicar los roles de la [identidad visual aprobada por Franco](11_identidad_visual.md) con CSS estándar. |
 
 ## Estructura de directorios propuesta
 

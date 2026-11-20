@@ -40,7 +40,7 @@ Este registro separa lo que falta decidir de lo ya aprobado. Un pendiente de con
 | PA-09 | Media | Afinar texto de presentación, historia y preguntas frecuentes. | Revisión editorial final. | Franco redacta; dueña confirma. |
 | PA-10 | Media | Precisar personal calificado, condiciones de actividades y estacionalidad. | Publicación de esas afirmaciones; no extrapolar aptitud universal. | Dueña. |
 | PA-12 | Media | Definir dominio final, accesos y configuración de alojamiento y publicación. | Despliegue e indexación; verificar límites y condiciones vigentes. | Cliente gestiona dominio; Franco configura lo acordado. |
-| PA-13 | Media | Definir tipografías, aplicación de marca y adaptaciones móviles de las referencias. | Diseño visual final; siempre recursos gratuitos. | Franco, con revisión de la dueña. |
+| PA-13 | Media | Franco eligió Aventura, su paleta y el carácter de titulares gruesos en C-03. Queda la revisión de marca con la dueña, la familia tipográfica definitiva y la adaptación al material final. Ver [identidad visual](11_identidad_visual.md). | Aplicación final de marca y tipografía, con recursos gratuitos. | Franco, con revisión de la dueña. |
 | PA-14 | Media | Acordar dispositivos de prueba y criterios técnicos concretos de carga/fluidez. | Verificación de calidad antes de publicar. | Franco. |
 
 ## Resoluciones registradas

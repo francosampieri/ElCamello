@@ -15,7 +15,8 @@
     "preview": "astro preview",
     "test:contenido": "node --test tests/contenido.test.mjs",
     "test:smoke": "node --test tests/smoke.test.mjs",
-    "test": "npm run test:contenido && npm run test:smoke",
+    "test:prototipo": "node --test tests/prototipo-visual.test.mjs",
+    "test": "npm run test:contenido && npm run test:smoke && npm run test:prototipo",
     "verify": "npm run check && npm run build && npm test"
   },
   "dependencies": {
