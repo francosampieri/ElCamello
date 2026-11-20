@@ -1,6 +1,6 @@
 # Parador El Camello - Web
 
-Repositorio del sitio web de Parador El Camello, Cacheuta, Mendoza. La documentación del proyecto se mantiene en español. La fundación documental está completa y C-01 incorpora una base ejecutable de Astro con TypeScript estricto y CSS estándar. La página actual es una comprobación técnica mínima; el contenido comercial y la dirección visual se desarrollarán en los siguientes changes. React se incorporará solo cuando una interacción lo justifique.
+Repositorio del sitio web de Parador El Camello, Cacheuta, Mendoza. C-01 incorporó la base ejecutable de Astro con TypeScript estricto y CSS estándar. C-02 prepara el contenido compartido para las futuras secciones y páginas. La portada actual sigue siendo una comprobación técnica mínima. La dirección visual se trabajará en los siguientes changes.
 
 ## Organización
 
@@ -12,8 +12,8 @@ ElCamello/
 │   ├── discovery/               Discovery aprobado
 │   ├── knowledge-base/          Base de conocimiento consolidada
 │   ├── openspec/               Propuestas, requisitos, tareas y verificaciones
-│   ├── src/                    Página mínima, layout y estilos
-│   ├── tests/                  Comprobaciones HTTP de la salida generada
+│   ├── src/                    Página mínima, layout, estilos y datos editoriales
+│   ├── tests/                  Pruebas de contenido y comprobaciones HTTP
 │   ├── package.json            Dependencias y comandos
 │   ├── package-lock.json       Resoluciones reproducibles
 │   └── README.md
@@ -44,8 +44,10 @@ Abrir la URL que muestra Astro en la consola. La aplicación no requiere claves,
 | `npm run check` | Comprobar tipos de Astro y TypeScript. |
 | `npm run build` | Generar el sitio estático en `dist/`. |
 | `npm run preview` | Servir localmente el último build; ejecutar `build` antes. |
-| `npm test` | Verificar por HTTP el último build; no lo recompila. |
-| `npm run verify` | Ejecutar tipos, build y tests en secuencia; detenerse si falla una etapa. |
+| `npm run test:contenido` | Probar las consultas, los estados editoriales y la validación con Node. |
+| `npm run test:smoke` | Verificar por HTTP el último build. Ejecutar `build` antes. |
+| `npm test` | Ejecutar las pruebas de contenido y las comprobaciones HTTP. |
+| `npm run verify` | Ejecutar tipos, build y tests en secuencia. El primer fallo detiene el comando. |
 
 Para comprobar cambios, usar `npm run verify`. Los dos smokes verifican HTTP 200 e identidad semántica en español para `/`, y HTTP 404 para una ruta inexistente. Inician su propio servidor en un puerto libre y lo cierran al terminar. No acreditan diseño visual, comportamiento interactivo, accesibilidad integral, Safari real ni rendimiento del sitio final.
 
@@ -56,7 +58,21 @@ La [verificación de C-01](openspec/changes/archive/2026-11-19-foundation-setup/
 - [Discovery aprobado](discovery/discovery.md).
 - [Base de conocimiento e índice de documentos](knowledge-base/README.md).
 
-Los contenidos se centralizarán en archivos TypeScript. Las fotografías seleccionadas y preparadas para la web se incorporarán al repositorio; la distribución de videos sigue pendiente de evaluar las primeras exportaciones. Todos los recursos serán gratuitos.
+## Contenido compartido
+
+Los módulos de [src/data](src/data/) reúnen identidad, contacto, cuatro propuestas, consulta general, instalaciones, actividades, preguntas frecuentes y medios. La futura tarjeta y el detalle consultarán el mismo registro con `buscarPropuesta(id)`. El ID es interno y permanece estable aunque cambie el título o el slug. Un ID desconocido devuelve `undefined`. Estas consultas son funciones para el código del sitio y se pueden probar sin un servidor.
+
+Un valor `confirmado` conserva su fuente. Un `provisional` aporta un texto o valor para composición y registra qué verificar. Un `pendiente` indica que aún falta un valor utilizable, como el número de WhatsApp validado. Para listar los campos que requieren revisión desde la raíz:
+
+```powershell
+node --input-type=module -e "import { listarPendientes } from './src/data/contenido.ts'; console.dir(listarPendientes(), { depth: null })"
+```
+
+Por ejemplo, la entrada `propuestas.empresas.titulo` apunta a la unidad `titulo` en [propuestas.ts](src/data/propuestas.ts). Al confirmar el título, sustituí la unidad por `confirmado('Nombre acordado', 'Validación de la dueña')`. La consulta devolverá su valor nuevo y el inventario dejará de mostrar esa entrada. El resto de las revisiones seguirá en el inventario. Los ejemplos de horarios, capacidades, contactos, precios y slugs conservan las validaciones comerciales y editoriales indicadas en [preguntas abiertas](knowledge-base/10_preguntas_abiertas.md).
+
+`validarCatalogo()` informa IDs duplicados o referencias rotas con su ubicación. Una selección de medios `pendiente` carece de ID y figura en el inventario editorial. Una selección con IDs exige que cada uno exista en el catálogo. C-04 incorporará las exportaciones web seleccionadas. La distribución de videos se evaluará con esas exportaciones.
+
+La [verificación de C-02](openspec/changes/archive/2026-11-20-contenido-centralizado/verification.md) registra las pruebas y el control negativo del flujo.
 
 ## Documentación de partida
 

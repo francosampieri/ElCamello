@@ -43,3 +43,5 @@ Cada regla tiene un identificador para vincular contenido, funcionalidades y rev
 - **RN-TE-03:** Los contenidos se centralizan en archivos TypeScript reutilizados entre páginas para mantener una sola fuente de los datos compartidos.
 
 Los detalles operativos que siguen abiertos se registran en [10](10_preguntas_abiertas.md). Su ausencia puede permitir continuar una composición interna, pero impide publicar ese dato como confirmado.
+
+Para esa composición interna, Franco autorizó el 20/11/2026 completar lo no confirmado con textos y valores provisionales claramente registrados. Deben estar disponibles junto con los confirmados y conservar su estado e inventario de reemplazos en la fuente central. Esta autorización no transforma ejemplos en hechos comerciales ni resuelve las decisiones de publicación, precios, nombres, rutas, condiciones o medios todavía abiertas. Los contactos sin validar se representan sin destinos inventados utilizables; los medios sin selección real pueden seguir pendientes.

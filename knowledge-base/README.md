@@ -1,6 +1,6 @@
 # Parador El Camello — Base de conocimiento
 
-Base de conocimiento construida de forma interactiva con Franco Sampieri. Recoge el Discovery aprobado y las decisiones técnicas posteriores, confirmadas el 18 de noviembre de 2026. Describe el lanzamiento acordado: C-01 ya implementó la base técnica mínima y las funcionalidades comerciales siguen pendientes.
+Base de conocimiento construida de forma interactiva con Franco Sampieri. Recoge el Discovery aprobado y las decisiones técnicas posteriores. C-01 implementó la base técnica mínima y C-02, el catálogo editorial compartido. Las páginas y sus funciones comerciales se trabajarán en los changes siguientes.
 
 ## Índice de archivos
 

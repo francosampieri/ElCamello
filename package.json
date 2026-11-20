@@ -13,7 +13,9 @@
     "check": "astro check",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "node --test tests/smoke.test.mjs",
+    "test:contenido": "node --test tests/contenido.test.mjs",
+    "test:smoke": "node --test tests/smoke.test.mjs",
+    "test": "npm run test:contenido && npm run test:smoke",
     "verify": "npm run check && npm run build && npm test"
   },
   "dependencies": {

@@ -2,7 +2,11 @@
 
 ## Dominios
 
-El modelo representa contenido editorial centralizado en archivos TypeScript, una decisión aprobada. No representa tablas de una base de datos ni datos de clientes. Los nombres y campos siguientes son una **propuesta técnica revisable** al implementar.
+El modelo representa el contenido editorial centralizado en TypeScript. C-02 implementó el catálogo y su contrato de lectura en [src/data](../src/data/). La tabla de entidades recoge campos orientativos para la evolución de ese catálogo.
+
+**Criterio de composición confirmado el 20/11/2026:** mostrar la información confirmada y completar lo desconocido con textos y valores provisionales autorizados por Franco, registrando claramente qué hay que reemplazar. Las consultas conservarán el valor y su estado; no filtrarán automáticamente los provisionales ni ocultarán una propuesta por tener pendientes. Esta autorización permite componer durante desarrollo, no convierte ejemplos en hechos aprobados ni decide su presentación comercial final.
+
+C-02 mantiene el estado por unidad editorial que se confirma de forma independiente, sin envolver cada ID técnico. `buscarPropuesta(id)` consulta el registro compartido. `listarPendientes()` deriva la ubicación, el valor representativo, la revisión y la fuente o responsable cuando se conocen. `validarCatalogo()` señala identificadores duplicados y referencias rotas. Ver el [diseño de C-02](../openspec/changes/archive/2026-11-20-contenido-centralizado/design.md) y el [ejemplo de edición](../README.md#contenido-compartido).
 
 - **Identidad del parador:** presentación, fortalezas, historia y contacto público.
 - **Propuestas:** cuatro experiencias con información propia y referencias a servicios y medios.
@@ -32,7 +36,7 @@ Son referencias entre objetos o módulos del proyecto. No requieren SQL, migraci
 | Instalación | `id: string`, `titulo: string`, `descripcion: string`, `medios: string[]`, `estado: string` | Puede referenciar varias fotos; una capacidad debe describir qué uso mide. |
 | Actividad | `id: string`, `titulo: string`, `descripcion: string`, `temporada?: string`, `condiciones: Condicion[]`, `medios: string[]` | La estacionalidad y las condiciones se validan; no se deducen de imágenes. |
 | Medio | `id: string`, `tipo: 'imagen' o 'video'`, `referencia: string`, `textoAlternativo?: string`, `contexto?: string`, `aprobado: boolean` | Para imágenes locales, la referencia podrá ser una importación compatible con Astro. El tipo exacto se decidirá al implementar. |
-| Condición | `etiqueta: string`, `valor?: string`, `estado: 'pendiente' o 'confirmado'` | Permite distinguir un dato desconocido de una condición confirmada. Los pendientes no se publican como hechos. |
+| Condición | `etiqueta: string`, `valor?: string`, `estado: 'pendiente', 'provisional' o 'confirmado'` | Distingue ausencia, ejemplo para composición y condición confirmada; un ejemplo disponible no aprueba la condición final. |
 | FAQ | `pregunta: string`, `respuesta: string`, `estado: string` | General o vinculada a una propuesta. Evitar respuestas contradictorias duplicadas. |
 | Contacto / Ubicación | `numeroWhatsApp: string`, `instagram: string`, `direccion?: string`, `indicaciones?: string`, `enlaceMapa?: string` | Número, acceso y enlace final deben validarse antes de publicar. |
 
@@ -42,9 +46,11 @@ Los videos podrán necesitar referencias separadas para horizontal, vertical e i
 
 - La principal y la página específica utilizan el mismo registro de propuesta; no se mantienen dos versiones de sus incluidos o extras.
 - Las referencias a medios deben existir y apuntar a exportaciones para web, no a miniaturas de revisión.
-- El estado de aprobación es editorial, no un flujo de usuarios dentro del sitio. Puede mantenerse en la documentación o en datos auxiliares durante desarrollo.
+- El estado editorial se registra junto a cada unidad de contenido en los módulos TypeScript.
+- Los valores provisionales se registran en la fuente central y siguen disponibles para composición. Los campos que no pueden tener un ejemplo utilizable, como un medio aún no seleccionado, pueden seguir pendientes y sin una referencia inventada.
 - No se crean entidades de reserva, cliente, pago, usuario, agenda o evento de analítica.
-- Una descripción de precio sigue pendiente de decisión comercial. No se añade un importe de ejemplo como dato inicial real.
+- Una descripción de precio sigue pendiente de decisión comercial. Puede haber un importe representativo provisional registrado para componer; no es un dato inicial real ni decide que el sitio final muestre precios.
+- Un contacto no validado usa un marcador claramente provisional y no accionable, sin números de terceros inventados. No se inventan archivos audiovisuales, identidades ni contexto de personas o eventos para completar el catálogo.
 
 ## Datos iniciales y base operativa
 

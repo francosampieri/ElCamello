@@ -1,6 +1,6 @@
 # Decisiones y supuestos
 
-Las decisiones siguientes fueron confirmadas por Franco en la conversación de fundación. Las confirmaciones técnicas posteriores al [Discovery](../discovery/discovery.md) resuelven sus puntos abiertos sin modificar ese antecedente. La estructura de archivos y los campos de contenido de [04](04_modelo_de_datos.md) y [08](08_arquitectura_propuesta.md) son propuestas técnicas revisables.
+Las decisiones siguientes fueron confirmadas por Franco durante la fundación y la preparación de changes. Las confirmaciones posteriores al [Discovery](../discovery/discovery.md) resuelven sus puntos abiertos sin modificar ese antecedente. La estructura de archivos y los campos de contenido de [04](04_modelo_de_datos.md) y [08](08_arquitectura_propuesta.md) son propuestas técnicas revisables.
 
 ## Decisiones documentadas
 
@@ -67,6 +67,14 @@ Las decisiones siguientes fueron confirmadas por Franco en la conversación de f
 **Alternativas consideradas:** reutilizar verticales, recortar un solo montaje o comprar componentes.
 **Justificación:** conservar encuadres adecuados y coherencia audiovisual dentro del criterio gratuito aprobado.
 **Trade-offs aceptados:** hay trabajo de producción y adaptación; ninguna referencia comercial implica compra ni copia íntegra. El video mantiene pausa fuera de vista y respaldo estático.
+
+### DD-09 — Composición con provisionales registrados
+
+**Decisión confirmada el 20/11/2026:** mostrar todo lo confirmado y completar los datos faltantes con textos y valores provisionales para desarrollo, dejando identificado qué hay que cambiar.
+**Contexto:** preparar C-02 y avanzar en composición aunque las decisiones comerciales sigan abiertas.
+**Alternativas consideradas:** filtrar en cada consumidor, ofrecer una proyección solo con datos aprobados u ocultar toda propuesta incompleta. Franco eligió una lectura completa con provisionales registrados en la misma fuente.
+**Justificación:** permite diseñar con contenido representativo sin esperar cada texto y condición final.
+**Trade-offs aceptados:** los ejemplos necesitan trazabilidad y revisión; no equivalen a hechos aprobados, rutas finales o decisión de mostrar precios. El inventario de reemplazos se deriva del contenido para evitar duplicación manual. No se inventan medios reales ni contactos utilizables de terceros. El catálogo y el registro derivado se implementaron y verificaron en [C-02](../openspec/changes/archive/2026-11-20-contenido-centralizado/verification.md).
 
 ## Supuestos inferidos y límites de evidencia
 

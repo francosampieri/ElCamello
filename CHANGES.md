@@ -19,7 +19,7 @@ Cada change se trabaja en su propia rama `feature/change_x`, usando su número s
 
 Este roadmap cubre el lanzamiento en español de la principal y cuatro páginas de propuestas. Conserva Astro, TypeScript, CSS estándar, React selectivo, contenido compartido en TypeScript y fotografías seleccionadas dentro del repositorio. Los originales quedan fuera. Agenda, analítica, cuentas, CMS, reservas automáticas y pagos no son dependencias del lanzamiento.
 
-Estado comprobado al 19/11/2026: C-01 `foundation-setup` está implementado, verificado y archivado, con sus ocho tareas completas y su especificación sincronizada. C-02 a C-13 siguen pendientes. Consultar el CLI para recuperar el estado vigente. `C-01` es el ID documental; el nombre para el comando es, por ejemplo, `/opsx:propose foundation-setup`.
+Al 20/11/2026, C-01 y C-02 están archivados y sus requisitos están en las especificaciones principales. C-03 a C-13 siguen pendientes. Consultar el CLI para recuperar el estado vigente.
 
 La dirección visual inicial es parte central del producto y se valida temprano. Los efectos concretos, las tipografías y la distribución de videos se deciden mediante pruebas; no se presupone 3D, contracción de portada, Cloudinary ni una librería. Solo se usan recursos gratuitos. El objetivo expresado de un mes a un mes y medio orienta la priorización, sin convertir este grafo en una estimación temporal.
 
@@ -142,10 +142,10 @@ C-06 a C-09 producen componentes o módulos con ownership separado. C-11 es due�
 ## FASE 1 — Contratos, dirección visual y preparación
 
 ### [C-02] `contenido-centralizado`
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` implementado, verificado y archivado en `feature/change_2`. Ver [evidencias](openspec/changes/archive/2026-11-20-contenido-centralizado/verification.md).
 - **Scope**:
   - Definir los tipos y módulos compartidos para identidad, contacto, cuatro propuestas, instalaciones, actividades, FAQs y referencias a medios, ajustando el modelo editorial propuesto de la KB.
-  - Cargar los cuatro registros base con IDs estables; separar incluidos y extras. Mantener condiciones, precios, nombres y slugs todavía no confirmados como pendientes editoriales, no como datos públicos reales.
+  - Cargar los cuatro registros base con IDs estables; separar incluidos y extras. Mantener condiciones, precios, nombres y slugs todavía no confirmados como pendientes editoriales, no como datos públicos reales. Para componer, usar textos y valores provisionales autorizados y registrados junto con los confirmados, con inventario de reemplazos derivado de la misma fuente.
   - Establecer el contrato de lectura utilizado por previews y detalles para que ambos consuman una única fuente. Referenciar imágenes seleccionadas sin incorporar la biblioteca original ni fijar proveedor de video.
   - Verificar comportamiento de selección/reutilización y referencias: propuesta existente y desconocida, IDs o medios incoherentes cuando corresponda. Usar comprobación de tipos y tests significativos donde haya lógica, no tests por cada texto.
 - **Dependencias**: C-01

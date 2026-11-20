@@ -1,6 +1,6 @@
 # Arquitectura propuesta
 
-Las tecnologías y versiones verificadas están en [02](02_descripcion_general.md). C-01 creó la base técnica estática; la organización funcional siguiente distingue archivos existentes de carpetas previstas para changes posteriores, sin ampliar el alcance. La página mínima no representa el diseño visual de C-03.
+Las tecnologías y versiones verificadas están en [02](02_descripcion_general.md). C-01 creó la base técnica estática y C-02 implementó el catálogo editorial reutilizable. La organización siguiente distingue archivos existentes de carpetas previstas para changes posteriores.
 
 ## Patrones aplicados
 
@@ -24,12 +24,13 @@ web/
 ├── package.json               Versiones directas y comandos actuales
 ├── package-lock.json          Árbol reproducible de dependencias
 ├── tests/smoke.test.mjs        Dos comprobaciones HTTP de la base
+├── tests/contenido.test.mjs    Consultas, edición y referencias del catálogo
 ├── src/                       Base creada en C-01
 │   ├── pages/index.astro       Página técnica mínima; propuestas futuras
 │   ├── layouts/BaseLayout.astro Layout base compartido
 │   ├── styles/global.css      CSS estándar inicial
 │   ├── components/            Previsto: componentes de la experiencia
-│   ├── data/                  Previsto: identidad, propuestas, FAQs y catálogo
+│   ├── data/                  C-02: datos editoriales y consultas compartidas
 │   ├── types/                 Previsto cuando sean útiles tipos compartidos
 │   ├── scripts/               Previsto: comportamiento sin React
 │   └── assets/images/         Previsto: fotografías seleccionadas
