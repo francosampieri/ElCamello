@@ -1,11 +1,24 @@
 ---
 import '../styles/global.css';
+import Navegacion from '../components/Navegacion.astro';
+import { destinosHabilitados, inicio } from '../data/navegacion.ts';
+import type { EnlaceNavegacion } from '../data/navegacion.ts';
+import { contacto, identidad } from '../data/parador.ts';
 
 interface Props {
   title?: string;
+  enlaces?: readonly EnlaceNavegacion[];
+  rutaInicio?: string;
 }
 
-const { title = 'Parador El Camello' } = Astro.props;
+const {
+  title = 'Parador El Camello',
+  enlaces = destinosHabilitados([inicio], ['inicio']),
+  rutaInicio = '/',
+} = Astro.props;
+const { nombre } = identidad.unidades;
+const marca = nombre.estado !== 'pendiente' ? nombre.valor : title;
+const { instagram } = contacto.unidades;
 ---
 
 <!doctype html>
@@ -16,6 +29,17 @@ const { title = 'Parador El Camello' } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <a class="salto" href="#contenido">Saltar al contenido</a>
+    <header class="cabecera">
+      <a class="marca-del-sitio" href={rutaInicio}>{marca}</a>
+      <Navegacion enlaces={enlaces} />
+    </header>
+    <main id="contenido" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="pie">
+      <p>{marca}</p>
+      {instagram.estado === 'confirmado' && <a href={instagram.valor}>Instagram</a>}
+    </footer>
   </body>
 </html>

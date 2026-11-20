@@ -19,7 +19,7 @@ Cada change se trabaja en su propia rama `feature/change_x`, usando su número s
 
 Este roadmap cubre el lanzamiento en español de la principal y cuatro páginas de propuestas. Conserva Astro, TypeScript, CSS estándar, React selectivo, contenido compartido en TypeScript y fotografías seleccionadas dentro del repositorio. Los originales quedan fuera. Agenda, analítica, cuentas, CMS, reservas automáticas y pagos no son dependencias del lanzamiento.
 
-Al 20/11/2026, C-01 a C-04 están archivados y sus requisitos están en las especificaciones principales. C-05 a C-13 siguen pendientes. Consultar el CLI para recuperar el estado vigente.
+Al 20/11/2026, C-01 a C-05 están archivados y sus requisitos están en las especificaciones principales. C-06 a C-13 siguen pendientes. Consultar el CLI para recuperar el estado vigente.
 
 La dirección visual inicial es parte central del producto y se valida temprano. Los efectos concretos, las tipografías y la distribución de videos se deciden mediante pruebas; no se presupone 3D, contracción de portada, Cloudinary ni una librería. Solo se usan recursos gratuitos. El objetivo expresado de un mes a un mes y medio orienta la priorización, sin convertir este grafo en una estimación temporal.
 
@@ -190,7 +190,7 @@ C-06 a C-09 producen componentes o módulos con ownership separado. C-11 es due�
   - [10 — Preguntas abiertas](knowledge-base/10_preguntas_abiertas.md) § «Preguntas abiertas priorizadas» — PA-01, PA-02 y PA-07.
 
 ### [C-05] `estructura-y-navegacion-responsive`
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` implementado, verificado y archivado en `feature/change_5`. Ver [verificación de C-05](openspec/changes/archive/2026-11-20-estructura-y-navegacion-responsive/verification.md).
 - **Scope**:
   - Implementar layout, variables CSS acordadas, navegación móvil/desktop, footer y estructura compartida de página, con ownership claro para futuras ramas.
   - Crear enlaces de contacto reutilizables desde los datos controlados: mensaje por propuesta, contacto general y «Armá tu propuesta». Validar codificación con acentos/caracteres especiales y evitar que el contacto general herede una propuesta incorrecta.

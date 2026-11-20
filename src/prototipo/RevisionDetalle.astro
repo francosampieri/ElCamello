@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { enlaces, ruta } from './navegacion-revision.ts';
+
+export const prerender = false;
+
+---
+
+<BaseLayout title="Detalle de muestra · El Camello" enlaces={enlaces} rutaInicio={ruta}>
+  <h1>Detalle de muestra</h1>
+  <p>Este recorrido interno ensaya el regreso a una sección desde otra página.</p>
+  <a href="/revision-navegacion/#propuestas">Volvé a las propuestas</a>
+</BaseLayout>

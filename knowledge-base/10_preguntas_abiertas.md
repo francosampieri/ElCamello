@@ -36,7 +36,7 @@ Este registro separa lo que falta decidir de lo ya aprobado. Un pendiente de con
 | PA-05 | Alta | Precisar incluidos, extras, horarios, capacidades y condiciones por propuesta. | Publicación de información comercial; puede llegar durante desarrollo. | Dueña valida, con apoyo comercial. |
 | PA-06 | Alta | Decidir si se publican precios y bajo qué condiciones. | Presentación comercial final de propuestas. | Dueña y responsables comerciales; Franco lo implementa. |
 | PA-07 | Alta | Identificar personas y eventos de fotos y completar faltantes de propuestas/Nosotros. | Selección audiovisual y afirmaciones de contexto. | Dueña identifica y aprueba; Franco selecciona. |
-| PA-08 | Alta | Validar número de WhatsApp, mensajes, dirección e indicaciones y mecanismo de mapa. | Contacto y ubicación antes de publicar. | Dueña y responsable comercial; Franco verifica enlaces. |
+| PA-08 | Alta | Verificar en WhatsApp el número informado por Franco en C-05 y confirmar su formato de enlace. Revisar los seis borradores, la dirección, las indicaciones y el mecanismo de mapa. | Contacto y ubicación antes de publicar. | Dueña y responsable comercial; Franco verifica enlaces. |
 | PA-09 | Media | Afinar texto de presentación, historia y preguntas frecuentes. | Revisión editorial final. | Franco redacta; dueña confirma. |
 | PA-10 | Media | Precisar personal calificado, condiciones de actividades y estacionalidad. | Publicación de esas afirmaciones; no extrapolar aptitud universal. | Dueña. |
 | PA-12 | Media | Definir dominio final, accesos y configuración de alojamiento y publicación. | Despliegue e indexación; verificar límites y condiciones vigentes. | Cliente gestiona dominio; Franco configura lo acordado. |

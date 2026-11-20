@@ -58,6 +58,18 @@ test('la portada generada responde con un documento español e identidad accesib
   assert.match(html, /<h1\b[^>]*>\s*Parador El Camello\s*<\/h1>/i);
 });
 
+test('la principal tiene un marco común con salto y solo destinos públicos disponibles', async () => {
+  const html = await (await fetch(baseUrl, { signal: AbortSignal.timeout(5_000) })).text();
+  for (const tag of ['header', 'main', 'footer']) {
+    assert.equal([...html.matchAll(new RegExp('<' + tag + '\\b', 'g'))].length, 1);
+  }
+  assert.match(html, /href="#contenido">Saltar al contenido/);
+  assert.match(html, /<main\b[^>]*id="contenido"[^>]*tabindex="-1"/);
+  assert.match(html, /Cacheuta, Mendoza/);
+  assert.match(html, /<nav\b[\s\S]*?href="\/"[\s\S]*?<\/nav>/);
+  assert.doesNotMatch(html, /href="[^"]*(?:#propuestas|revision-navegacion|wa\.me)/);
+});
+
 test('una ruta inexistente responde 404 en vez de simular una página válida', async () => {
   const response = await fetch(new URL('/ruta-inexistente-c01', baseUrl), {
     signal: AbortSignal.timeout(5_000),

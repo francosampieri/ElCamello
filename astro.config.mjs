@@ -9,6 +9,8 @@ export default defineConfig({
         if (command === 'dev') {
           injectRoute({ pattern: '/prototipo-visual', entrypoint: './src/prototipo/Comparador.astro' });
           injectRoute({ pattern: '/revision-medios', entrypoint: './src/prototipo/RevisionMedios.astro' });
+          injectRoute({ pattern: '/revision-navegacion', entrypoint: './src/prototipo/RevisionNavegacion.astro' });
+          injectRoute({ pattern: '/revision-navegacion/detalle', entrypoint: './src/prototipo/RevisionDetalle.astro' });
         }
       },
     },

@@ -59,6 +59,8 @@ No hay autenticación, autorización de aplicación ni almacenamiento de cliente
 
 Los enlaces externos se construyen desde valores controlados; WhatsApp utiliza un mensaje correctamente codificado y el número validado. No se necesita una API key para abrir ese enlace. Los permisos de las cuentas de desarrollo, alojamiento y dominio pertenecen a la operación externa.
 
+C-05 aplica la estructura compartida a la principal y deja el contenido de sección en el slot de `BaseLayout`. Los destinos habilitados se vinculan a rutas y fragmentos existentes. El menú móvil funciona como desplegable nativo y conserva el scroll. La revisión local permite probar anclas entre páginas y consultar borradores. La salida pública incluye la acción de WhatsApp cuando están confirmados el destinatario y el mensaje de ese contexto. Ver [operación y ubicación de datos](../README.md#navegación-y-mensajes-de-consulta).
+
 ## Variables de entorno
 
 No hay variables de entorno obligatorias cerradas en esta fase. Dominio canónico y contacto necesitarán una configuración central, cuyo formato definitivo se decidirá al implementar. No se crearán nombres ficticios de secretos ni credenciales de servicios todavía no elegidos.

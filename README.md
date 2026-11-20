@@ -74,6 +74,14 @@ Por ejemplo, la entrada `propuestas.empresas.titulo` apunta a la unidad `titulo`
 
 Con `npm run dev`, abrí `/revision-medios/` en la dirección que indique Astro para ver la salida optimizada de las fotos. El [pedido de portada](documentacion/revision-medios/pedido-portada.md), el [mapa de faltantes](documentacion/revision-medios/faltantes-c04.md) y la [ficha de C-09](documentacion/revision-medios/ficha-evaluacion-c09.md) documentan el material y sus próximas revisiones.
 
+## Navegación y mensajes de consulta
+
+Ejecutá `npm run dev` y abrí `/revision-navegacion/`. El detalle de muestra permite volver a Propuestas mediante un enlace directo a la sección. En Consulta están los seis borradores para revisar con la dueña. Las dos rutas pertenecen al entorno de desarrollo.
+
+[BaseLayout](src/layouts/BaseLayout.astro) contiene la cabecera, el salto al contenido, la región principal y el pie. El slot recibe el contenido de cada página. Proporcioná al layout destinos construidos con [destinosHabilitados](src/data/navegacion.ts), junto con la ruta y el ID del fragmento que existe en HTML. C-11 conectará las secciones publicadas de la principal.
+
+El número proporcionado por Franco queda en [parador.ts](src/data/parador.ts) con verificación pendiente en WhatsApp. Los mensajes comunes se editan allí y los de cada propuesta en [propuestas.ts](src/data/propuestas.ts). Tras PA-08, registrá el destino en dígitos internacionales y confirmá cada mensaje por separado. El [resolver](src/data/whatsapp.ts) prepara un enlace solo con ambos datos confirmados. `npm run test:navegacion` comprueba los enlaces con datos sintéticos y sin abrir conversaciones.
+
 La [verificación de C-02](openspec/changes/archive/2026-11-20-contenido-centralizado/verification.md) registra las pruebas y el control negativo del flujo.
 
 ## Revisar las direcciones visuales

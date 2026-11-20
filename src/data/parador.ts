@@ -16,11 +16,22 @@ export const identidad = {
 
 export const contacto: {
   id: string;
-  unidades: { whatsapp: Unidad<string>; instagram: Unidad<string>; direccion: Unidad<string> };
+  unidades: {
+    whatsapp: Unidad<string>;
+    mensajeGeneral: Unidad<string>;
+    mensajePersonalizado: Unidad<string>;
+    instagram: Unidad<string>;
+    direccion: Unidad<string>;
+  };
 } = {
   id: 'canales',
   unidades: {
-    whatsapp: pendiente('Validar el número de WhatsApp.', validarContacto),
+    whatsapp: provisional('+54 261 659-3964', 'Comprobar el destinatario en WhatsApp y registrar su formato internacional validado.', {
+      ...validarContacto,
+      fuente: 'Número proporcionado por Franco durante C-05',
+    }),
+    mensajeGeneral: provisional('¡Hola! Quisiera conocer las actividades y opciones para visitar El Camello con mi grupo.', 'Revisar con la dueña antes de habilitar el enlace.', validarContacto),
+    mensajePersonalizado: provisional('¡Hola! Quisiera armar una propuesta a medida para mi grupo. ¿Podemos conversar sobre la fecha y las actividades?', 'Revisar con la dueña antes de habilitar el enlace.', validarContacto),
     instagram: confirmado('https://www.instagram.com/parador_elcamello/', 'Perfil compartido por Franco en el chat del proyecto'),
     direccion: pendiente('Confirmar dirección, indicaciones de acceso y mapa.', validarContacto),
   },
